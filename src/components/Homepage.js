@@ -10,7 +10,7 @@ function Homepage() {
       <main>
         <Outlet />
       </main>
-      <h1>Homepage</h1>
+      <h1>Launder</h1>
       <footer></footer>
     </div>
   );
