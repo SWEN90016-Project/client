@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import Carousel from "./carousel";
 import UploadFile from "./uploadFiles";
+import BlogSection from "./blogSection";
 import "./englishdynamic.css";
 function EnglishDynamic() {
   return (
@@ -38,7 +39,14 @@ function EnglishDynamic() {
       a landing page that has language and view hear data.
       and permissions to show specific things
       </div>
-     
+     <div>
+      maybe i have a chunk of code below which shows information depending on the auth level, like a collague of information depending on auth level
+     </div>
+      
+
+<BlogSection></BlogSection>
+
+
       
     </div>
   );
