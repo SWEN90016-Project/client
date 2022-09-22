@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.bg-shape{
+    width:520px;
+    height:520px;
+    border-radius: 999999px;
+
+}
+.bg-blur {
+    filter:blur(192px);
+}
+
+.bg-yellow{
+    background-color: #F3DD0F;
+}
+
+.bg-black{
+    background-color: #1E1919;
+}
+.bg-red{
+    background-color: #F8442B;
+}
+.bg-absolute{
+    position: absolute;
+top: 0;
+right: 0;
+}

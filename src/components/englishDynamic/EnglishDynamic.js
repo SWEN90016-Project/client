@@ -1,9 +1,26 @@
 import { Link } from "react-router-dom";
 import Carousel from "./carousel";
 import UploadFile from "./uploadFiles";
+import "./englishdynamic.css";
 function EnglishDynamic() {
   return (
     <div className=" h-full bg-white" style={{ minHeight: 1080 }}>
+      
+      <div className=" bg-absolute justify-end grid grid-rows-3 ">
+      <div className="row-span-1">  
+      <div class=" bg-shape bg-black bg-blur bg-opacity-50 " > </div>
+      </div>
+      <div className="row-span-1"> 
+      <div class=" bg-shape bg-yellow bg-blur bg-opacity-50" > </div>
+      </div>      
+      <div className="row-span-1"> 
+      <div class=" bg-shape bg-red bg-blur bg-opacity-50" ></div>
+      </div>      
+      </div>
+      
+
+      
+ 
       <div>
             <Link to="/Homepage">Homepage</Link>
             </div>
@@ -15,14 +32,14 @@ function EnglishDynamic() {
         </div>
       </div>
       <div className="  px-48 py-48 justify-items-center	">
-
+     
       <UploadFile></UploadFile>
       the next thing to do is download data capability
       a landing page that has language and view hear data.
       and permissions to show specific things
       </div>
-
-
+     
+      
     </div>
   );
 }
