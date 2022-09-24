@@ -1,5 +1,6 @@
 import Nav from "./Nav.js";
 import BlogSection from "./englishDynamic/blogSection.js";
+import Latestpage from "./latestsection";
 // import AuthPage from "./AuthPage";
 import { Routes, Route, Outlet } from "react-router-dom";
 function Homepage() {
