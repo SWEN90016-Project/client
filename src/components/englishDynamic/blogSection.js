@@ -13,7 +13,7 @@ const posts = [
     imageUrl: AboriginalFlag,
     readingTime: "6 min",
     author: {
-      name: "name of author",
+      name: "Name of author",
       href: "#",
       imageUrl: AboriginalFlag,
     },
