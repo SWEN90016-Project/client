@@ -40,6 +40,7 @@ function SamplePage() {
   const formSubmission = async (e) => {
     e.preventDefault();
     try {
+      // TODO: ADD LOGGEDIN USER TO FORM
       const formData = new FormData();
       formData.append("myFile", selectedFile);
       formData.append("text", text);
@@ -91,6 +92,7 @@ function SamplePage() {
     <div className="bg-slate-400 h-screen overflow-auto">
       <div className="h-screen w-96">
         {/* the form to be submitted to the backend */}
+
         <Form
           encType="multipart/form-data"
           className="space-y-6"
