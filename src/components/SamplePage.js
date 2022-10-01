@@ -1,10 +1,10 @@
 import { useState, useRef, useEffect } from "react";
-import uploadFile from "./englishDynamic/uploadFiles.js";
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
 import axios from "axios";
 const API_URL = "http://localhost:9000/api/";
+// this provides an alert if required field is not filled
 const required = (value) => {
   if (!value) {
     return (
@@ -20,7 +20,6 @@ function SamplePage() {
   const form = useRef();
   const [title, setTitle] = useState("");
   const [text, setText] = useState("");
-  const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
   const [selectedFile, setSelectedFile] = useState(null);
   const [getState, setGetState] = useState("defualt");
@@ -34,38 +33,19 @@ function SamplePage() {
     const text = e.target.value;
     setText(text);
   };
-  const handlePost = (e) => {
-    e.preventDefault();
-    setMessage("");
-    setLoading(true);
-    form.current.validateAll();
-    if (checkBtn.current.context._errors.length === 0) {
-      console.log(selectedFile);
-      createPost(title, text, selectedFile).then((error) => {
-        const resMessage =
-          (error.response &&
-            error.response.data &&
-            error.response.data.message) ||
-          error.message ||
-          error.toString();
-        setLoading(false);
-        setMessage(resMessage);
-      });
-    } else {
-      setLoading(false);
-    }
-  };
 
-  const testing = async (e) => {
+  // this gets called when the form is submitted
+  // creates a new formData then appends the values to the form
+  // the string is important as this gets matched on the backend
+  const formSubmission = async (e) => {
     e.preventDefault();
     try {
-      // let formID = document.getElementById("form");
       const formData = new FormData();
       formData.append("myFile", selectedFile);
       formData.append("text", text);
       formData.append("title", title);
-      console.log(formData);
       axios.post(API_URL + "single", formData);
+      // calls a reload after submission to reset form and load new data
       window.location.reload();
     } catch (error) {
       const message = error.response
@@ -75,16 +55,18 @@ function SamplePage() {
     }
   };
 
+  // function to get every file
+  // also contains loading check in this
   const getAllFiles = async () => {
     try {
       const response = await axios.get(API_URL + "getFile");
       setGetState(response.data);
       setGetLoading(false);
-      console.log(response.data);
     } catch (error) {
       console.error(error);
     }
   };
+  // deletes the file based on the id
   const deleteFile = async (id) => {
     try {
       axios.delete(API_URL + "deleteFile/" + id);
@@ -93,9 +75,11 @@ function SamplePage() {
       console.error(error);
     }
   };
+  // gets the files on the first load of the page
   useEffect(() => {
     getAllFiles();
   }, []);
+  // renders a loading page while it waits for the request to finish
   if (getLoading) {
     return (
       <div>
@@ -106,12 +90,12 @@ function SamplePage() {
   return (
     <div className="grid grid-flow-col">
       <div className="h-screen w-96">
+        {/* the form to be submitted to the backend */}
         <Form
           encType="multipart/form-data"
           className="space-y-6"
-          onSubmit={testing}
+          onSubmit={formSubmission}
           ref={form}
-          if="form"
         >
           <div>
             <label
@@ -151,13 +135,14 @@ function SamplePage() {
                 className="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                 value={text}
                 onChange={onChangeText}
-                //   validations={[required]}
+                validations={[required]}
               />
             </div>
             <input
               type="file"
               id="myFile"
               name="myFile"
+              validations={[required]}
               onChange={(e) => setSelectedFile(e.target.files[0])}
             />
           </div>
@@ -172,7 +157,6 @@ function SamplePage() {
           <button
             type="submit"
             className="bg-blue-500 px-8 py-2 rounded-md text-white"
-            disabled={loading}
           >
             Submit
           </button>
@@ -183,7 +167,10 @@ function SamplePage() {
 
         <div className="p-2 grid grid-flow-col">
           {getState.data.map((item) => (
-            <div className="grid grid-flow-row bg-white rounded-lg w-96">
+            <div
+              key={item.title}
+              className="grid grid-flow-row bg-white rounded-lg w-96"
+            >
               <div>
                 <h1>{item.title}</h1>
                 <button
