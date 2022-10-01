@@ -15,19 +15,6 @@ const required = (value) => {
   }
 };
 
-// const get = axios.get("http://localhost:9000/api/download");
-const createPost = (title, text, upload) => {
-  return axios
-    .post(API_URL + "upload", {
-      title,
-      text,
-      upload,
-    })
-    .then((response) => {
-      //   console.log(response.data);
-      return response.data;
-    });
-};
 function SamplePage() {
   const checkBtn = useRef();
   const form = useRef();
@@ -37,30 +24,7 @@ function SamplePage() {
   const [message, setMessage] = useState("");
   const [selectedFile, setSelectedFile] = useState(null);
   const [getState, setGetState] = useState("defualt");
-
-  // On file select (from the pop up)
-  // onFileChange = (event) => {
-  //   // Update the state
-  //   setSelectedFile(event.target.files[0]);
-  // };
-  // const get = async () => {
-  //   try {
-  //     const response = await axios.get("http://localhost:9000/api/download", {
-  //       responseType: "arraybuffer",
-  //     });
-  //     console.log(response);
-  //     // setGetState(response.data);
-  //     // console.log(getState);
-  //     const binaryString = Array.from(new Uint8Array(response.body), (v) =>
-  //       String.fromCharCode(v)
-  //     ).join("");
-  //     // 7.
-  //     // const theImage = btoa(binaryString);
-  //     setGetState(binaryString.toString("base64"));
-  //   } catch (e) {
-  //     console.error(e);
-  //   }
-  // };
+  const [getLoading, setGetLoading] = useState(true);
 
   const onChangeTitle = (e) => {
     const title = e.target.value;
@@ -98,10 +62,11 @@ function SamplePage() {
       // let formID = document.getElementById("form");
       const formData = new FormData();
       formData.append("myFile", selectedFile);
-      formData.append("text", message);
+      formData.append("text", text);
+      formData.append("title", title);
       console.log(formData);
-      axios.post("http://localhost:9000/api/single", formData);
-      // window.location.reload();
+      axios.post(API_URL + "single", formData);
+      window.location.reload();
     } catch (error) {
       const message = error.response
         ? error.response.data.message
@@ -111,11 +76,19 @@ function SamplePage() {
   };
 
   const getAllFiles = async () => {
-    // e.preventDefault();
     try {
-      const response = await axios.get("http://localhost:9000/api/getFile");
+      const response = await axios.get(API_URL + "getFile");
       setGetState(response.data);
-      console.log(getState.data[0].filePath);
+      setGetLoading(false);
+      console.log(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  const deleteFile = async (id) => {
+    try {
+      axios.delete(API_URL + "deleteFile/" + id);
+      window.location.reload();
     } catch (error) {
       console.error(error);
     }
@@ -123,6 +96,13 @@ function SamplePage() {
   useEffect(() => {
     getAllFiles();
   }, []);
+  if (getLoading) {
+    return (
+      <div>
+        <h1>Loading</h1>
+      </div>
+    );
+  }
   return (
     <div className="flex h-screen flex-col justify-center">
       <Form
@@ -199,19 +179,31 @@ function SamplePage() {
         <CheckButton style={{ display: "none" }} ref={checkBtn} />
         <div></div>
       </Form>
-      <button
-        onClick={() => {
-          getAllFiles();
-          console.log("test");
-        }}
-      >
-        testing
-      </button>
-      <img
-        src={`http://localhost:9000/${getState.data[0].filePath}`}
-        alt="{{ image }}"
-        width={500}
-      />
+
+      <div className="p-2 grid grid-flow-col">
+        {getState.data.map((item) => (
+          <div className="grid grid-flow-row bg-white rounded-lg w-96">
+            <div>
+              <h1>{item.title}</h1>
+              <button
+                className="bg-red-400 rounded-lg p-2"
+                onClick={() => {
+                  deleteFile(item._id);
+                }}
+              >
+                Delete
+              </button>
+            </div>
+
+            <img
+              src={`http://localhost:9000/${item.filePath}`}
+              alt="{{ image }}"
+              width={500}
+            />
+            <p>{item.text}</p>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
