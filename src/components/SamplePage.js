@@ -88,7 +88,7 @@ function SamplePage() {
     );
   }
   return (
-    <div className="grid grid-flow-col">
+    <div className="bg-slate-400 h-screen overflow-auto">
       <div className="h-screen w-96">
         {/* the form to be submitted to the backend */}
         <Form
@@ -165,11 +165,11 @@ function SamplePage() {
           <div></div>
         </Form>
 
-        <div className="p-2 grid grid-flow-col">
+        <div className="p-2 grid grid-flow-cols gap-2">
           {getState.data.map((item) => (
             <div
               key={item.title}
-              className="grid grid-flow-row bg-white rounded-lg w-96"
+              className="grid grid-flow-rows bg-white rounded-lg w-96"
             >
               <div>
                 <h1>{item.title}</h1>
