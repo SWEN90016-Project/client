@@ -104,105 +104,107 @@ function SamplePage() {
     );
   }
   return (
-    <div className="flex h-screen flex-col justify-center">
-      <Form
-        encType="multipart/form-data"
-        className="space-y-6"
-        onSubmit={testing}
-        ref={form}
-        if="form"
-      >
-        <div>
-          <label
-            htmlFor="title"
-            className="block text-sm font-medium text-gray-700"
-          >
-            Title
-          </label>
-          <div className="mt-1">
-            <Input
-              type="text"
-              name="fileTitle"
-              id="title"
-              required
-              className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 disabled:cursor-not-allowed disabled:border-gray-200 disabled:bg-gray-50 disabled:text-gray-500 sm:text-sm"
-              placeholder="Title"
-              value={title}
-              onChange={onChangeTitle}
-              validations={[required]}
-            />
-          </div>
-        </div>
-
-        <div>
-          <label
-            htmlFor="text"
-            className="block text-sm font-medium text-gray-700"
-          >
-            Text
-          </label>
-          <div className="mt-1">
-            <Input
-              id="text"
-              name="text"
-              type="text"
-              placeholder="Text"
-              className="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
-              value={text}
-              onChange={onChangeText}
-              //   validations={[required]}
-            />
-          </div>
-          <input
-            type="file"
-            id="myFile"
-            name="myFile"
-            onChange={(e) => setSelectedFile(e.target.files[0])}
-          />
-        </div>
-
-        {message && (
-          <div className="form-group">
-            <div className="alert alert-danger" role="alert">
-              {message}
-            </div>
-          </div>
-        )}
-        <button
-          type="submit"
-          className="bg-blue-500 px-8 py-2 rounded-md text-white"
-          disabled={loading}
+    <div className="grid grid-flow-col">
+      <div className="h-screen w-96">
+        <Form
+          encType="multipart/form-data"
+          className="space-y-6"
+          onSubmit={testing}
+          ref={form}
+          if="form"
         >
-          Submit
-        </button>
-
-        <CheckButton style={{ display: "none" }} ref={checkBtn} />
-        <div></div>
-      </Form>
-
-      <div className="p-2 grid grid-flow-col">
-        {getState.data.map((item) => (
-          <div className="grid grid-flow-row bg-white rounded-lg w-96">
-            <div>
-              <h1>{item.title}</h1>
-              <button
-                className="bg-red-400 rounded-lg p-2"
-                onClick={() => {
-                  deleteFile(item._id);
-                }}
-              >
-                Delete
-              </button>
+          <div>
+            <label
+              htmlFor="title"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Title
+            </label>
+            <div className="mt-1">
+              <Input
+                type="text"
+                name="fileTitle"
+                id="title"
+                required
+                className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 disabled:cursor-not-allowed disabled:border-gray-200 disabled:bg-gray-50 disabled:text-gray-500 sm:text-sm"
+                placeholder="Title"
+                value={title}
+                onChange={onChangeTitle}
+                validations={[required]}
+              />
             </div>
-
-            <img
-              src={`http://localhost:9000/${item.filePath}`}
-              alt="{{ image }}"
-              width={500}
-            />
-            <p>{item.text}</p>
           </div>
-        ))}
+
+          <div>
+            <label
+              htmlFor="text"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Text
+            </label>
+            <div className="mt-1">
+              <Input
+                id="text"
+                name="text"
+                type="text"
+                placeholder="Text"
+                className="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                value={text}
+                onChange={onChangeText}
+                //   validations={[required]}
+              />
+            </div>
+            <input
+              type="file"
+              id="myFile"
+              name="myFile"
+              onChange={(e) => setSelectedFile(e.target.files[0])}
+            />
+          </div>
+
+          {message && (
+            <div className="form-group">
+              <div className="alert alert-danger" role="alert">
+                {message}
+              </div>
+            </div>
+          )}
+          <button
+            type="submit"
+            className="bg-blue-500 px-8 py-2 rounded-md text-white"
+            disabled={loading}
+          >
+            Submit
+          </button>
+
+          <CheckButton style={{ display: "none" }} ref={checkBtn} />
+          <div></div>
+        </Form>
+
+        <div className="p-2 grid grid-flow-col">
+          {getState.data.map((item) => (
+            <div className="grid grid-flow-row bg-white rounded-lg w-96">
+              <div>
+                <h1>{item.title}</h1>
+                <button
+                  className="bg-red-400 rounded-lg p-2"
+                  onClick={() => {
+                    deleteFile(item._id);
+                  }}
+                >
+                  Delete
+                </button>
+              </div>
+
+              <img
+                src={`http://localhost:9000/${item.filePath}`}
+                alt="{{ image }}"
+                width={500}
+              />
+              <p>{item.text}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
