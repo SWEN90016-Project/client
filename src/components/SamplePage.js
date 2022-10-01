@@ -1,5 +1,5 @@
-import { useState, useRef } from "react";
-
+import { useState, useRef, useEffect } from "react";
+import uploadFile from "./englishDynamic/uploadFiles.js";
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
@@ -14,11 +14,14 @@ const required = (value) => {
     );
   }
 };
-const createPost = (title, text) => {
+
+// const get = axios.get("http://localhost:9000/api/download");
+const createPost = (title, text, upload) => {
   return axios
-    .post(API_URL + "newPost", {
+    .post(API_URL + "upload", {
       title,
       text,
+      upload,
     })
     .then((response) => {
       //   console.log(response.data);
@@ -32,6 +35,33 @@ function SamplePage() {
   const [text, setText] = useState("");
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [getState, setGetState] = useState("defualt");
+
+  // On file select (from the pop up)
+  // onFileChange = (event) => {
+  //   // Update the state
+  //   setSelectedFile(event.target.files[0]);
+  // };
+  // const get = async () => {
+  //   try {
+  //     const response = await axios.get("http://localhost:9000/api/download", {
+  //       responseType: "arraybuffer",
+  //     });
+  //     console.log(response);
+  //     // setGetState(response.data);
+  //     // console.log(getState);
+  //     const binaryString = Array.from(new Uint8Array(response.body), (v) =>
+  //       String.fromCharCode(v)
+  //     ).join("");
+  //     // 7.
+  //     // const theImage = btoa(binaryString);
+  //     setGetState(binaryString.toString("base64"));
+  //   } catch (e) {
+  //     console.error(e);
+  //   }
+  // };
+
   const onChangeTitle = (e) => {
     const title = e.target.value;
     setTitle(title);
@@ -46,7 +76,8 @@ function SamplePage() {
     setLoading(true);
     form.current.validateAll();
     if (checkBtn.current.context._errors.length === 0) {
-      createPost(title, text).then((error) => {
+      console.log(selectedFile);
+      createPost(title, text, selectedFile).then((error) => {
         const resMessage =
           (error.response &&
             error.response.data &&
@@ -60,9 +91,47 @@ function SamplePage() {
       setLoading(false);
     }
   };
+
+  const testing = async (e) => {
+    e.preventDefault();
+    try {
+      // let formID = document.getElementById("form");
+      const formData = new FormData();
+      formData.append("myFile", selectedFile);
+      formData.append("text", message);
+      console.log(formData);
+      axios.post("http://localhost:9000/api/single", formData);
+      // window.location.reload();
+    } catch (error) {
+      const message = error.response
+        ? error.response.data.message
+        : error.message;
+      setMessage(message);
+    }
+  };
+
+  const getAllFiles = async () => {
+    // e.preventDefault();
+    try {
+      const response = await axios.get("http://localhost:9000/api/getFile");
+      setGetState(response.data);
+      console.log(getState.data[0].filePath);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  useEffect(() => {
+    getAllFiles();
+  }, []);
   return (
     <div className="flex h-screen flex-col justify-center">
-      <Form className="space-y-6" onSubmit={handlePost} ref={form}>
+      <Form
+        encType="multipart/form-data"
+        className="space-y-6"
+        onSubmit={testing}
+        ref={form}
+        if="form"
+      >
         <div>
           <label
             htmlFor="title"
@@ -73,7 +142,7 @@ function SamplePage() {
           <div className="mt-1">
             <Input
               type="text"
-              name="title"
+              name="fileTitle"
               id="title"
               required
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 disabled:cursor-not-allowed disabled:border-gray-200 disabled:bg-gray-50 disabled:text-gray-500 sm:text-sm"
@@ -104,7 +173,14 @@ function SamplePage() {
               //   validations={[required]}
             />
           </div>
+          <input
+            type="file"
+            id="myFile"
+            name="myFile"
+            onChange={(e) => setSelectedFile(e.target.files[0])}
+          />
         </div>
+
         {message && (
           <div className="form-group">
             <div className="alert alert-danger" role="alert">
@@ -123,6 +199,19 @@ function SamplePage() {
         <CheckButton style={{ display: "none" }} ref={checkBtn} />
         <div></div>
       </Form>
+      <button
+        onClick={() => {
+          getAllFiles();
+          console.log("test");
+        }}
+      >
+        testing
+      </button>
+      <img
+        src={`http://localhost:9000/${getState.data[0].filePath}`}
+        alt="{{ image }}"
+        width={500}
+      />
     </div>
   );
 }
