@@ -15,6 +15,7 @@ function Groups() {
   const [groupName, setgroupName] = useState("");
   const [selected, setSelected] = useState("select user");
   const [query, setQuery] = useState("");
+  const [selectedGroup, setSelectedGroup] = useState("");
   const onChangeGroupName = (e) => {
     const text = e.target.value;
     setgroupName(text);
@@ -56,13 +57,14 @@ function Groups() {
     }
   };
 
-  const addUser = async (id) => {
+  const addUser = async (groupid, userid, username, email) => {
     try {
-      axios.put(API_URL + "addUser/" + id, {
-        _id: "632bcf83ef3bfe02742070cb",
-        username: "newtest2",
-        email: "kk@jj.com",
+      axios.put(API_URL + "addUser/" + groupid, {
+        _id: userid,
+        username: username,
+        email: email,
       });
+      window.location.reload();
     } catch (error) {
       console.error(error);
     }
@@ -78,11 +80,31 @@ function Groups() {
       console.error(error);
     }
   };
+  const deleteGroup = async (id) => {
+    try {
+      await axios.delete(API_URL + "deleteGroup/" + id);
+      window.location.reload();
+      // setSelected(users[0].username);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  const deleteUser = async (groupID, userID) => {
+    try {
+      await axios.delete(
+        API_URL + "removeUserFromGroup/" + groupID + "/" + userID
+      );
+      window.location.reload();
+      // setSelected(users[0].username);
+    } catch (error) {
+      console.error(error);
+    }
+  };
   useEffect(() => {
     getAllGroups();
-    console.log(allGroups);
-    getAllUser();
 
+    getAllUser();
+    console.log(allGroups);
     // console.log(users[0].username);
   }, []);
   if (loading) {
@@ -121,10 +143,21 @@ function Groups() {
           {allGroups.map((group) => (
             <div key={group._id} className="p-2 bg-white rounded-lg">
               <div className="grid grid-flow-col">
-                <p>{group.groupName}</p>
+                <div className="flex flex-row">
+                  <p>{group.groupName}</p>
+                  <button
+                    onClick={() => {
+                      deleteGroup(group._id);
+                    }}
+                    className=" bg-red-400 rounded-lg p-1"
+                  >
+                    Delete Group
+                  </button>
+                </div>
                 <button
                   onClick={() => {
                     setOpen(true);
+                    setSelectedGroup(group._id);
                   }}
                   className="place-self-end bg-blue-400 rounded-lg p-2"
                 >
@@ -132,9 +165,19 @@ function Groups() {
                 </button>
               </div>
 
-              <div className="grid grid-cols-5 grid-flow-row">
+              <div className="grid grid-cols-5 grid-flow-row py-4">
                 {group.userList.map((user) => (
-                  <p key={group._id + user.username}>{user.username}</p>
+                  <div className="flex flex-row">
+                    <p key={group._id + user.username}>{user.username}</p>
+                    <button
+                      onClick={() => {
+                        deleteUser(group._id, user._id);
+                      }}
+                      className="bg-red-400"
+                    >
+                      delete
+                    </button>
+                  </div>
                 ))}
               </div>
             </div>
@@ -267,7 +310,16 @@ function Groups() {
                     <button
                       type="button"
                       className="inline-flex w-full justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:col-start-2 sm:text-sm"
-                      onClick={() => setOpen(false)}
+                      onClick={() => {
+                        setOpen(false);
+                        console.log(selected);
+                        addUser(
+                          selectedGroup,
+                          selected._id,
+                          selected.username,
+                          selected.email
+                        );
+                      }}
                     >
                       Add User
                     </button>
