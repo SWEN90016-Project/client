@@ -11,29 +11,65 @@ import EnglishDynamic from "./components/englishDynamic/EnglishDynamic";
 import Fatsil from "./components/Fatsil";
 import Main from "./components/Main";
 import SamplePage from "./components/SamplePage";
+import AuthService from "./Services/auth.service";
+import { useEffect, useState, createContext } from "react";
+export const UserTokenContext = createContext(null);
 function App() {
+  const [authLevel, setAuthLevel] = useState("new");
+  const [loading, setLoading] = useState(true);
+  let url = location.href;
+  document.body.addEventListener(
+    "click",
+    () => {
+      requestAnimationFrame(() => {
+        if (url !== location.href) {
+          console.log("url changed");
+          url = location.href;
+        }
+      });
+    },
+    true
+  );
+  useEffect(() => {
+    const getLevel = async () => {
+      try {
+        const response = await AuthService.getAuthLevel();
+        setAuthLevel(response);
+        setLoading(false);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    getLevel();
+  }, [url]);
+
+  if (loading) {
+    return <div>Loading</div>;
+  }
   return (
-    <div className="h-screen bg-gray-500">
-      <BrowserRouter>
-        <main>
-          <Routes>
-            <Route path="/" element={<Welcome />} />
-            <Route path="/Login" element={<Login />} />
-            <Route path="/Sample" element={<SamplePage />} />
-            <Route path="/Homepage" element={<Main />}>
-              <Route path="" element={<Homepage />} />
-              <Route path="Authorization" element={<AuthPage />} />
-              <Route path="Groups" element={<Groups />} />
-              <Route path="Text" element={<TextSearch />} />
-              <Route path="EnglishStatic" element={<EnglishStatic />} />
-              <Route path="Indigenous" element={<Indigenous />} />
-              <Route path="EnglishDynamic" element={<EnglishDynamic />} />
-              <Route path="Fatsil" element={<Fatsil />} />
-            </Route>
-          </Routes>
-        </main>
-      </BrowserRouter>
-    </div>
+    <UserTokenContext.Provider value={authLevel}>
+      <div className="h-screen bg-gray-500">
+        <BrowserRouter>
+          <main>
+            <Routes>
+              <Route path="/" element={<Welcome />} />
+              <Route path="/Login" element={<Login />} />
+              <Route path="/Sample" element={<SamplePage />} />
+              <Route path="/Homepage" element={<Main />}>
+                <Route path="" element={<Homepage />} />
+                <Route path="Authorization" element={<AuthPage />} />
+                <Route path="Groups" element={<Groups />} />
+                <Route path="Text" element={<TextSearch />} />
+                <Route path="EnglishStatic" element={<EnglishStatic />} />
+                <Route path="Indigenous" element={<Indigenous />} />
+                <Route path="EnglishDynamic" element={<EnglishDynamic />} />
+                <Route path="Fatsil" element={<Fatsil />} />
+              </Route>
+            </Routes>
+          </main>
+        </BrowserRouter>
+      </div>
+    </UserTokenContext.Provider>
   );
 }
 

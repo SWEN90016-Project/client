@@ -1,10 +1,11 @@
-import { useEffect, useState, Fragment, useRef } from "react";
+import { useEffect, useState, Fragment, useRef, useContext } from "react";
 import { Dialog, Transition, Combobox } from "@headlessui/react";
 import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/20/solid";
 import axios from "axios";
-
+import { UserTokenContext } from "../../App.js";
 const API_URL = "http://localhost:9000/api/";
 function Text() {
+  const auth = useContext(UserTokenContext);
   const [selected, setSelected] = useState("select user");
   const [query, setQuery] = useState("");
   const [textQuery, setTextQuery] = useState("");
@@ -14,13 +15,13 @@ function Text() {
   const [users, setUsers] = useState("");
   const [open, setOpen] = useState(false);
   const [selectedText, setSelectedText] = useState("");
-
   const cancelButtonRef = useRef(null);
   const onChangeText = (e) => {
     const text = e.target.value;
     setText(text);
     setTextQuery(text);
   };
+
   const filteredUsers =
     query === ""
       ? users
@@ -73,9 +74,12 @@ function Text() {
       console.error(error);
     }
   };
+
   const getUserTexts = async () => {
     try {
-      const response = await axios.get(API_URL + "findUserTexts/" + id);
+      const response = axios.get(
+        API_URL + "findUserTexts/" + "632bcf83ef3bfe02742070cb"
+      );
       setGetText(response.data.data);
       setLoading(false);
     } catch (error) {
@@ -84,8 +88,12 @@ function Text() {
   };
 
   const getAllText = async () => {
+    // const result = await getLevel();
     try {
-      const response = await axios.get(API_URL + "getAllText");
+      var response;
+
+      response = await axios.get(API_URL + "getAllText");
+
       setGetText(response.data.data);
       setLoading(false);
     } catch (e) {
@@ -105,9 +113,12 @@ function Text() {
 
   useEffect(() => {
     getAllUser();
+    {
+      auth === "admin" ? getAllUser() : getUserTexts();
+    }
     getAllText();
-    // console.log(getText);
   }, []);
+
   if (loading) {
     return (
       <div>
@@ -140,13 +151,17 @@ function Text() {
                     >
                       AddUser
                     </button>
-                    <button
-                      onClick={() => {
-                        deleteText(data._id);
-                      }}
-                    >
-                      Delete Text
-                    </button>
+                    {auth === "admin" ? (
+                      <button
+                        onClick={() => {
+                          deleteText(data._id);
+                        }}
+                      >
+                        Delete Text
+                      </button>
+                    ) : (
+                      <></>
+                    )}
                   </div>
                 </div>
 

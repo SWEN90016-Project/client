@@ -1,5 +1,7 @@
 import axios from "axios";
+import { useState } from "react";
 const API_URL = "http://localhost:9000/";
+
 const register = (username, email, password) => {
   return axios.post(API_URL + "signup", {
     username,
@@ -30,10 +32,34 @@ const getCurrentUser = () => {
   console.log(localStorage.getItem("user"));
   return JSON.parse(localStorage.getItem("user"));
 };
+
+const getAuthLevel = async () => {
+  const token = JSON.parse(localStorage.getItem("user"));
+
+  try {
+    const config = {
+      headers: { Authorization: `Bearer ${token.accessToken}` },
+    };
+    const response = await axios.get(API_URL + "api/permsCheck", config);
+    // console.log(response.data);
+    if (response.status === 200) {
+      // console.log(response.data.user);
+      level = response.data.user.Permissions;
+      return response.data.user.Permissions;
+    }
+
+    return "none";
+    // return response.data;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 const AuthService = {
   register,
   login,
   logout,
   getCurrentUser,
+  getAuthLevel,
 };
 export default AuthService;
