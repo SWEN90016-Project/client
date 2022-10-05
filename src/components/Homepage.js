@@ -7,13 +7,6 @@ import { Routes, Route, Outlet } from "react-router-dom";
 function Homepage() {
   return (
     <div className="h-screen bg-slate-50">
-      <header>
-        <Nav />
-      </header>
-      <main>
-        <Outlet />
-      </main>
-
       <h1 className="text-4xl font-bold text-center">
         {" "}
         <br></br>{" "}
