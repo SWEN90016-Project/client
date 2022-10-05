@@ -1,19 +1,28 @@
+import Nav from "./Nav.js";
+import BlogSection from "./englishDynamic/blogSection.js";
+//import Latestpage from "./latestsection.js";
+import LatestBlogs from "./latestsection.js";
 // import AuthPage from "./AuthPage";
-
+import { Routes, Route, Outlet } from "react-router-dom";
 function Homepage() {
   return (
-    <div className="h-screen bg-red-400">
-      <h1>Welcome to the Online Language Research Tool </h1>
+    <div className="h-screen bg-slate-50">
+      <header>
+        <Nav />
+      </header>
+      <main>
+        <Outlet />
+      </main>
+
+      <h1 className="text-4xl font-bold text-center">
+        {" "}
+        <br></br>{" "}
+      </h1>
       <div class="columns-1"></div>
       <body>
-        <p>Latest Research</p>
-
-        <ul class="list-decimal">
-          <li class="indent-8"> Research 1</li>
-          <li class="indent-8">Research 2</li>
-          <li class="indent-8">Research 3</li>
-        </ul>
+        <LatestBlogs></LatestBlogs>
       </body>
+      <footer> </footer>
     </div>
   );
 }
