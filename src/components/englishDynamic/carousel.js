@@ -35,13 +35,15 @@ return(
             src={AboriginalFlag}
             class="block w-full"
             alt="Wild Landscape"
+            height={500}
           />
         </div>
-        <div class="carousel-item float-left w-full">
+        <div class="carousel-item float-left w-full h-full ">
           <img
-            src={AboriginalHuman}
-            class="block w-full"
+            src={AboriginalFlag}
+            class="block w-full h-full"
             alt="Camera"
+            height={500}
           />
         </div>
         <div class="carousel-item float-left w-full">
@@ -49,6 +51,7 @@ return(
             src={TorresStraitFlag}
             class="block w-full"
             alt="Exotic Fruits"
+            height={500}
           />
         </div>
       </div>
