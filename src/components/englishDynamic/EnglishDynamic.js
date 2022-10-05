@@ -71,6 +71,7 @@ function EnglishDynamic() {
             </p>
           </div>
           <div className="mx-auto mt-12 grid max-w-lg gap-5 lg:max-w-none lg:grid-cols-3">
+            
             {getState.data.map((item) => (
               <div key={item._id} className="flex flex-col overflow-hidden rounded-lg shadow-lg">
                 <div className="flex-shrink-0">
@@ -108,6 +109,13 @@ function EnglishDynamic() {
               </div>
             ))}
           </div>
+          <Audio
+        urls={[
+          track,
+          'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3',
+          'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3',
+        ]}
+      />
         </div>
       <div className=" h-1/2 justify-center align-middle grid grid-cols-3 ">
         <div className=" col-start-2 col-end-3">
@@ -115,37 +123,19 @@ function EnglishDynamic() {
         </div>
       </div>
       <div className="  px-48 py-48 justify-items-center	">
-     
+      <p className="mx-auto mt-3 max-w-2xl text-4xl text-gray-500 sm:mt-4 py-8">
+      Upload your  text Language below  
+      </p>
       <Files />
       the next thing to do is download data capability
       a landing page that has language and view hear data.
       and permissions to show specific things
       </div>
-     <div>
-      maybe i have a chunk of code below which shows information depending on the auth level, like a collague of information depending on auth level
-     </div>
+
       
 
 
 
-
-<div className="p-2 grid grid-flow-cols gap-2">
-        
-        </div>
-        <Audio
-        urls={[
-          track,
-          'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3',
-          'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3',
-        ]}
-      />
-          <a href={AboriginalFlag} download="aboriginal.png"> Download Here </a>
-          <div className="  px-4 pt-16 pb-20 sm:px-6 lg:px-8 lg:pt-24 lg:pb-28">
-        <div className="absolute ">
-          <div className="h-1/3 bg-white sm:h-2/3" />
-        </div>
-        
-      </div>
 
 
       

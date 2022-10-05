@@ -65,7 +65,7 @@ const MultiPlayer = ({ urls }) => {
   const [players, toggle] = useMultiAudio(urls)
 
   return (
-    <div>
+    <div className='mx-auto mt-12 grid max-w-lg gap-5 lg:max-w-none lg:grid-cols-3 w-full '>
       {players.map((player, i) => (
         <Player key={i} player={player} toggle={toggle(i)} />
       ))}
@@ -74,9 +74,11 @@ const MultiPlayer = ({ urls }) => {
 }
 
 const Player = ({ player, toggle }) => (
-  <div>
+  
+  <div className=''>
     <p>Stream URL: {player.url}</p>
     <button  className="bg-red-400 rounded-lg p-2" onClick={toggle}>{player.playing ? 'Pause' : 'Play'}</button>
+    <a href={player.url} download={player.url}> Download Here </a>
   </div>
 )
 
