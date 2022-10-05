@@ -7,7 +7,7 @@ function SamplePage() {
       <div className="grid grid-flow-col">
         <Files />
         <Groups />
-        <Text />
+        {/* <Text /> */}
       </div>
     </div>
   );

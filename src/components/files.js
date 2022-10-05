@@ -3,6 +3,7 @@ import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
 import axios from "axios";
+import ImageCard from "./imageCard";
 const API_URL = "http://localhost:9000/api/";
 // this provides an alert if required field is not filled
 const required = (value) => {
@@ -68,14 +69,7 @@ function Files() {
     }
   };
   // deletes the file based on the id
-  const deleteFile = async (id) => {
-    try {
-      axios.delete(API_URL + "deleteFile/" + id);
-      window.location.reload();
-    } catch (error) {
-      console.error(error);
-    }
-  };
+
   // gets the files on the first load of the page
   useEffect(() => {
     getAllFiles();
@@ -173,24 +167,7 @@ function Files() {
               key={item.title}
               className="grid grid-flow-rows bg-white rounded-lg"
             >
-              <div>
-                <h1>{item.title}</h1>
-                <button
-                  className="bg-red-400 rounded-lg p-2"
-                  onClick={() => {
-                    deleteFile(item._id);
-                  }}
-                >
-                  Delete
-                </button>
-              </div>
-
-              <img
-                src={`http://localhost:9000/${item.filePath}`}
-                alt="{{ image }}"
-                width={500}
-              />
-              <p>{item.text}</p>
+              <ImageCard item={item} />
             </div>
           ))}
         </div>
