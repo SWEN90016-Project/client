@@ -13,13 +13,15 @@ function Homepage() {
       <main>
         <Outlet />
       </main>
-      <h1>Welcome to the Online Language Research Tool </h1>
+
+      <h1 className="text-4xl font-bold text-center">
+        {" "}
+        <br></br>{" "}
+      </h1>
       <div class="columns-1"></div>
       <body>
         <LatestBlogs></LatestBlogs>
-        <BlogSection></BlogSection>
       </body>
-
       <footer> </footer>
     </div>
   );
