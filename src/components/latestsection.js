@@ -90,7 +90,7 @@ const posts = [
     date: "December 12, 2021",
     datetime: "2021-12-12",
     imageUrl: AboriginalHuman,
-    readingTime: "3 min",
+    readingTime: "2 min",
     author: {
       name: "Name of author",
       href: "#",
