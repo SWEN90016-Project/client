@@ -167,9 +167,11 @@ function Groups() {
               </div>
 
               <div className="grid grid-cols-5 grid-flow-row py-4">
-                {group.userList.map((user) => (
+                {group.userList.map((user, index) => (
                   <div className="flex flex-row">
-                    <p key={group._id + user.username}>{user.username}</p>
+                    <p key={group._id + user.username + index}>
+                      {user.username}
+                    </p>
                     <button
                       onClick={() => {
                         deleteUser(group._id, user._id);

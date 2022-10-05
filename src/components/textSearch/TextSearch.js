@@ -3,6 +3,7 @@ import { Dialog, Transition, Combobox } from "@headlessui/react";
 import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/20/solid";
 import axios from "axios";
 import { UserTokenContext } from "../../App.js";
+import TextCard from "./TextCard.js";
 const API_URL = "http://localhost:9000/api/";
 function Text() {
   const auth = useContext(UserTokenContext);
@@ -113,9 +114,9 @@ function Text() {
 
   useEffect(() => {
     getAllUser();
-    {
-      auth === "admin" ? getAllUser() : getUserTexts();
-    }
+    // {
+    //   auth === "admin" ? getAllUser() : getUserTexts();
+    // }
     getAllText();
   }, []);
 
@@ -139,33 +140,12 @@ function Text() {
           ) : (
             filteredText.map((data) => (
               <div key={data._id}>
-                <div className="grid grid-flow-col">
-                  <h1>Posted By</h1>
-                  <p>Username here</p>
-                  <div>
-                    <button
-                      onClick={() => {
-                        setOpen(true);
-                        setSelectedText(data._id);
-                      }}
-                    >
-                      AddUser
-                    </button>
-                    {auth === "admin" ? (
-                      <button
-                        onClick={() => {
-                          deleteText(data._id);
-                        }}
-                      >
-                        Delete Text
-                      </button>
-                    ) : (
-                      <></>
-                    )}
-                  </div>
-                </div>
-
-                <p>{data.text}</p>
+                <TextCard
+                  setOpen={setOpen}
+                  setSelectedText={setSelectedText}
+                  deleteText={deleteText}
+                  data={data}
+                />
               </div>
             ))
           )}
