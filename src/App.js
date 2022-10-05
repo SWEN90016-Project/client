@@ -44,7 +44,7 @@ function App() {
   }, [url]);
 
   if (loading) {
-    return <div>Loading</div>;
+    return <div className="bg-white">Loading</div>;
   }
   return (
     <UserTokenContext.Provider value={authLevel}>

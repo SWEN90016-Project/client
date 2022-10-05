@@ -3,7 +3,7 @@ import Nav from "./Nav.js";
 import { Routes, Route, Outlet } from "react-router-dom";
 function Main() {
   return (
-    <div className="h-screen bg-yellow-400">
+    <div className="">
       <header>
         <Nav />
       </header>

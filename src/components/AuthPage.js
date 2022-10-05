@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 function AuthPage() {
@@ -6,6 +7,17 @@ function AuthPage() {
   const onValueChange = (e) => {
     rad = e.target.value;
     setRadio(rad);
+  };
+
+  const sendRequest = async () => {
+    try {
+      axios.post("http://localhost:9000/api/newRequest", {
+        username: "default",
+        level: radio,
+      });
+    } catch (error) {
+      console.error(error);
+    }
   };
   return (
     <div className="h-screen bg-blue-400">
@@ -78,6 +90,7 @@ function AuthPage() {
             className="border-2 border-blue-500 p-2 rounded-md"
             onClick={() => {
               console.log(radio);
+              sendRequest();
             }}
           >
             Submit

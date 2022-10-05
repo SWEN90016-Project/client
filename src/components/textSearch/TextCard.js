@@ -5,7 +5,7 @@ const API_URL = "http://localhost:9000/api/";
 function TextCard(props) {
   const auth = useContext(UserTokenContext);
   const [edit, setEdit] = useState(false);
-  const [editText, setEditText] = useState("");
+  const [editText, setEditText] = useState(props.data.text);
   const onChangeEdit = (e) => {
     const edit = e.target.value;
     setEditText(edit);
@@ -19,12 +19,16 @@ function TextCard(props) {
     }
   };
   return (
-    <div>
-      <div className="grid grid-flow-col">
-        <h1>Posted By</h1>
-        <p>Username here</p>
-        <div>
+    <div className="bg-white rounded-md">
+      <div className="grid grid-flow-col items-center bg-blue-500 p-2 rounded-t-md">
+        <div className="flex  flex-row gap-2 text-white text-lg font-medium">
+          <h1>Posted By:</h1>
+          <p>Username here</p>
+        </div>
+
+        <div className="flex place-self-end flex-row gap-2">
           <button
+            className="bg-blue-400 rounded-lg p-1 hover:bg-blue-700 hover:text-white"
             onClick={() => {
               props.setOpen(true);
               props.setSelectedText(props.data._id);
@@ -33,7 +37,7 @@ function TextCard(props) {
             AddUser
           </button>
           <button
-            className="bg-blue-400 rounded-lg p-2"
+            className="bg-blue-400 rounded-lg p-1 hover:bg-blue-700 hover:text-white"
             onClick={() => {
               setEdit(true);
             }}
@@ -42,34 +46,42 @@ function TextCard(props) {
           </button>
           {auth === "admin" ? (
             <button
+              className="bg-rose-400 rounded-lg p-1 hover:bg-red-500 hover:text-white"
               onClick={() => {
                 props.deleteText(props.data._id);
               }}
             >
-              Delete Text
+              Delete
             </button>
           ) : (
             <></>
           )}
         </div>
       </div>
-
-      {edit ? (
-        <div>
-          <input placeholder="edit mode" onChange={onChangeEdit} />{" "}
-          <button
-            className="bg-blue-400"
-            onClick={() => {
-              setEdit(false);
-              updateText(props.data._id);
-            }}
-          >
-            Finish
-          </button>
-        </div>
-      ) : (
-        <p>{props.data.text}</p>
-      )}
+      <div className="grid grid-flow-row p-2 gap-2">
+        <p className="font-bold">Posted Text:</p>
+        {edit ? (
+          <div>
+            <input
+              className="border-2 border-blue-500 mr-2 rounded-md"
+              placeholder="Edit mode"
+              onChange={onChangeEdit}
+              value={editText}
+            />
+            <button
+              className="bg-blue-400 rounded-lg p-1 hover:bg-blue-700 hover:text-white"
+              onClick={() => {
+                setEdit(false);
+                updateText(props.data._id);
+              }}
+            >
+              Finish
+            </button>
+          </div>
+        ) : (
+          <p>{props.data.text}</p>
+        )}
+      </div>
     </div>
   );
 }

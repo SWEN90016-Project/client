@@ -1,8 +1,11 @@
 import axios from "axios";
 import { useEffect, useState, Fragment, useRef } from "react";
 import { Dialog, Transition, Combobox } from "@headlessui/react";
-import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/20/solid";
-
+import {
+  CheckIcon,
+  ChevronUpDownIcon,
+  TrashIcon,
+} from "@heroicons/react/20/solid";
 // import { CheckIcon } from "@heroicons/react/outline";
 const API_URL = "http://localhost:9000/api/";
 
@@ -110,22 +113,22 @@ function Groups() {
   }, []);
   if (loading) {
     return (
-      <div>
+      <div className="h-screen bg-gradient-to-b from-blue-100 via-blue-300 to-blue-500">
         <h1>Loading</h1>
       </div>
     );
   }
   return (
-    <div className="py-2">
+    <div className="py-2 h-screen bg-gradient-to-b from-blue-100 via-blue-300 to-blue-500">
       <div className="grid grid-flow-row">
-        <div className="grid grid-cols-6">
-          <h1 className="">Groups</h1>
-          <div className="col-end-7 col-span-3 flex flex-row gap-2">
+        <div className="grid grid-flow-col items-center px-2">
+          <h1 className="">Groups Page</h1>
+          <div className="place-self-end flex flex-row gap-2">
             <input
               id="text"
               name="text"
               type="text"
-              placeholder="Text"
+              placeholder="Group Name"
               onChange={onChangeGroupName}
               className=" block appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
             />
@@ -133,52 +136,63 @@ function Groups() {
               onClick={() => {
                 addGroup(groupName);
               }}
-              className="bg-green-400 p-2 rounded-lg"
+              className="bg-blue-400 rounded-lg p-2 hover:bg-blue-700 hover:text-white"
             >
-              new group
+              Add
             </button>
           </div>
         </div>
         <div className="grid grid-flow-row gap-2 p-2 ">
           {/* filteredUsers.map((user) => ( */}
           {allGroups.map((group) => (
-            <div key={group._id} className="p-2 bg-white rounded-lg">
-              <div className="grid grid-flow-col">
-                <div className="flex flex-row">
-                  <p>{group.groupName}</p>
+            <div key={group._id} className="rounded-lg hover:shadow-2xl">
+              <div className="grid grid-flow-col items-center bg-blue-500 p-2 rounded-t-md">
+                <div className="flex  flex-row gap-2">
+                  <p className="text-white text-lg font-medium">
+                    {group.groupName}
+                  </p>
+                </div>
+                <div className="flex place-self-end flex-row gap-2">
+                  <button
+                    onClick={() => {
+                      setOpen(true);
+                      setSelectedGroup(group._id);
+                    }}
+                    className="place-self-end bg-blue-400 rounded-lg p-1 hover:bg-blue-700 hover:text-white"
+                  >
+                    Add User
+                  </button>
                   <button
                     onClick={() => {
                       deleteGroup(group._id);
                     }}
-                    className=" bg-red-400 rounded-lg p-1"
+                    className=" bg-rose-400 rounded-lg p-1 hover:bg-red-500 hover:text-white"
                   >
-                    Delete Group
+                    Delete
                   </button>
                 </div>
-                <button
-                  onClick={() => {
-                    setOpen(true);
-                    setSelectedGroup(group._id);
-                  }}
-                  className="place-self-end bg-blue-400 rounded-lg p-2"
-                >
-                  add User
-                </button>
               </div>
 
-              <div className="grid grid-cols-5 grid-flow-row py-4">
+              <div className="grid grid-cols-5 grid-flow-row py-4 bg-white rounded-b-md bg-opacity-60 backdrop-filter backdrop-blur-lg">
+                <div className="col-span-5 p-2 font-bold">Group Members:</div>
                 {group.userList.map((user, index) => (
-                  <div className="flex flex-row">
-                    <p key={group._id + user.username + index}>
+                  <div className="flex flex-row gap-1 p-2">
+                    <p
+                      key={group._id + user.username + index}
+                      className="px-2 text-medium"
+                    >
                       {user.username}
                     </p>
                     <button
                       onClick={() => {
                         deleteUser(group._id, user._id);
                       }}
-                      className="bg-red-400"
+                      className="border border-red-500 rounded-md hover:bg-red-500"
                     >
-                      delete
+                      <TrashIcon
+                        className="h-5 w-5 text-red-400 hover:text-white"
+                        aria-hidden="true"
+                      />
                     </button>
                   </div>
                 ))}
