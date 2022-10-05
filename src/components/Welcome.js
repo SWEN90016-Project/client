@@ -19,6 +19,7 @@ function Welcome() {
             >
               Login
             </Link>
+            
           </div>
         </div>
         <div className="h-screen bg-white col-span-2 grid grid-cols-1 gap-4 place-items-center">

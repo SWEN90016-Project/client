@@ -9,6 +9,7 @@ import EnglishStatic from "./components/englishStatic/EnglishStatic";
 import Indigenous from "./components/indigenous/Indigenous";
 import EnglishDynamic from "./components/englishDynamic/EnglishDynamic";
 import Fatsil from "./components/Fatsil";
+import SamplePage from "./components/SamplePage";
 function App() {
   return (
     <div className="h-screen bg-gray-500">
@@ -17,6 +18,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Welcome />} />
             <Route path="/Login" element={<Login />} />
+            <Route path="/Sample" element={<SamplePage />} />
             <Route path="/Homepage" element={<Homepage />}>
               <Route path="Authorization" element={<AuthPage />} />
               <Route path="Groups" element={<Groups />} />

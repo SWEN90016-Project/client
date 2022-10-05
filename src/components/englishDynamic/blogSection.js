@@ -95,7 +95,7 @@ const posts = [
                     <div className="flex-shrink-0">
                       <a href={post.author.href}>
                         <span className="sr-only">{post.author.name}</span>
-                        <img className="h-10 w-10 rounded-full" src={post.author.imageUrl} alt="" />
+                        <img className="h-10 w-10 rounded-full" src={post.author.imageUrl} alt="" width={500}/>
                       </a>
                     </div>
                     <div className="ml-3">
