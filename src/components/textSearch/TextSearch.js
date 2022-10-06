@@ -4,9 +4,10 @@ import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/20/solid";
 import axios from "axios";
 import { UserTokenContext } from "../../App.js";
 import TextCard from "./TextCard.js";
+import AuthService from "../../Services/auth.service.js";
 const API_URL = "http://localhost:9000/api/";
 function Text() {
-  const auth = useContext(UserTokenContext);
+  const { authLevel, username } = useContext(UserTokenContext);
   const [selected, setSelected] = useState("select user");
   const [query, setQuery] = useState("");
   const [textQuery, setTextQuery] = useState("");
@@ -17,10 +18,17 @@ function Text() {
   const [open, setOpen] = useState(false);
   const [selectedText, setSelectedText] = useState("");
   const cancelButtonRef = useRef(null);
+  const getUser = () => {
+    console.log(AuthService.getCurrentUser());
+  };
+  const onChangeSearch = (e) => {
+    const text = e.target.value;
+
+    setTextQuery(text);
+  };
   const onChangeText = (e) => {
     const text = e.target.value;
     setText(text);
-    setTextQuery(text);
   };
 
   const filteredUsers =
@@ -68,6 +76,7 @@ function Text() {
         text: text,
         id: selected._id,
         username: selected.username,
+        postedBy: username,
       };
       await axios.post(API_URL + "addText", newTextJson);
       window.location.reload();
@@ -118,6 +127,7 @@ function Text() {
     //   auth === "admin" ? getAllUser() : getUserTexts();
     // }
     getAllText();
+    console.log(authLevel + username);
   }, []);
 
   if (loading) {
@@ -134,7 +144,7 @@ function Text() {
           className="mt-2 mb-2 rounded-md"
           type="text"
           placeholder="Search"
-          onChange={onChangeText}
+          onChange={onChangeSearch}
         />
         {/* Post card */}
         <div className="grid grid-flow-row rounded-md">

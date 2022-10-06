@@ -3,7 +3,7 @@ import { UserTokenContext } from "../../App";
 import axios from "axios";
 const API_URL = "http://localhost:9000/api/";
 function TextCard(props) {
-  const auth = useContext(UserTokenContext);
+  const { authLevel, username } = useContext(UserTokenContext);
   const [edit, setEdit] = useState(false);
   const [editText, setEditText] = useState(props.data.text);
   const onChangeEdit = (e) => {
@@ -23,7 +23,7 @@ function TextCard(props) {
       <div className="grid grid-flow-col items-center bg-blue-500 p-2 rounded-t-md">
         <div className="flex  flex-row gap-2 text-white text-lg font-medium">
           <h1>Posted By:</h1>
-          <p>Username here</p>
+          <p>{username}</p>
         </div>
 
         <div className="flex place-self-end flex-row gap-2">
@@ -44,7 +44,7 @@ function TextCard(props) {
           >
             Edit
           </button>
-          {auth === "admin" ? (
+          {authLevel === "admin" ? (
             <button
               className="bg-rose-400 rounded-lg p-1 hover:bg-red-500 hover:text-white"
               onClick={() => {

@@ -9,20 +9,17 @@ const register = (username, email, password) => {
     password,
   });
 };
-const login = (email, password) => {
-  return axios
-    .post(API_URL + "signin", {
-      email,
-      password,
-    })
-    .then((response) => {
-      if (response.data.accessToken) {
-        // console.log("local");
-        localStorage.setItem("user", JSON.stringify(response.data));
-      }
-      //   console.log(response.data);
-      return response.data;
-    });
+const login = async (email, password) => {
+  const response = await axios.post(API_URL + "signin", {
+    email,
+    password,
+  });
+  if (response.data.accessToken) {
+    // console.log("local");
+    localStorage.setItem("user", JSON.stringify(response.data));
+  }
+  console.log(response.data);
+  return response.data;
 };
 const logout = () => {
   console.log("new");
@@ -44,8 +41,8 @@ const getAuthLevel = async () => {
     // console.log(response.data);
     if (response.status === 200) {
       // console.log(response.data.user);
-      level = response.data.user.Permissions;
-      return response.data.user.Permissions;
+      // level = response.data.user.Permissions;
+      return response.data.user;
     }
 
     return "none";

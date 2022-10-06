@@ -16,6 +16,7 @@ import { useEffect, useState, createContext } from "react";
 export const UserTokenContext = createContext(null);
 function App() {
   const [authLevel, setAuthLevel] = useState("new");
+  const [username, setUsername] = useState("Null");
   const [loading, setLoading] = useState(true);
   let url = location.href;
   document.body.addEventListener(
@@ -34,7 +35,8 @@ function App() {
     const getLevel = async () => {
       try {
         const response = await AuthService.getAuthLevel();
-        setAuthLevel(response);
+        setUsername(response.username);
+        setAuthLevel(response.Permissions);
         setLoading(false);
       } catch (error) {
         console.error(error);
@@ -47,7 +49,7 @@ function App() {
     return <div className="bg-white">Loading</div>;
   }
   return (
-    <UserTokenContext.Provider value={authLevel}>
+    <UserTokenContext.Provider value={{ authLevel, username }}>
       <div className="h-screen bg-gray-500">
         <BrowserRouter>
           <main>
