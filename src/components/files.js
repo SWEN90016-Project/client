@@ -1,9 +1,10 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useContext } from "react";
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
 import axios from "axios";
 import ImageCard from "./imageCard";
+import { UserTokenContext } from "../App";
 const API_URL = "http://localhost:9000/api/";
 // this provides an alert if required field is not filled
 const required = (value) => {
@@ -17,6 +18,7 @@ const required = (value) => {
 };
 
 function Files() {
+  const { authLevel, username } = useContext(UserTokenContext);
   const checkBtn = useRef();
   const form = useRef();
   const [title, setTitle] = useState("");
@@ -46,6 +48,7 @@ function Files() {
       formData.append("myFile", selectedFile);
       formData.append("text", text);
       formData.append("title", title);
+      formData.append("username", username);
       axios.post(API_URL + "single", formData);
       // calls a reload after submission to reset form and load new data
       window.location.reload();
