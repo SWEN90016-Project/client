@@ -35,6 +35,7 @@ function App() {
     const getLevel = async () => {
       try {
         const response = await AuthService.getAuthLevel();
+        // console.log(response);
         setUsername(response.username);
         setAuthLevel(response.Permissions);
         setLoading(false);

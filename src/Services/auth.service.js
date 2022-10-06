@@ -34,21 +34,31 @@ const getAuthLevel = async () => {
   const token = JSON.parse(localStorage.getItem("user"));
 
   try {
-    const config = {
-      headers: { Authorization: `Bearer ${token.accessToken}` },
-    };
+    console.log(JSON.parse(localStorage.getItem("user")));
+    var config;
+    if (token == null) {
+      config = "null";
+      console.log("null");
+    } else {
+      config = {
+        headers: { Authorization: `Bearer ${token.accessToken}` },
+      };
+    }
+
     const response = await axios.get(API_URL + "api/permsCheck", config);
-    // console.log(response.data);
+
     if (response.status === 200) {
       // console.log(response.data.user);
       // level = response.data.user.Permissions;
       return response.data.user;
     }
 
-    return "none";
     // return response.data;
   } catch (error) {
+    console.log("false");
+
     console.error(error);
+    return false;
   }
 };
 
