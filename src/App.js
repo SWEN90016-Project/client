@@ -8,6 +8,8 @@ import TextSearch from "./components/textSearch/TextSearch";
 import EnglishStatic from "./components/englishStatic/EnglishStatic";
 import Indigenous from "./components/indigenous/Indigenous";
 import EnglishDynamic from "./components/englishDynamic/EnglishDynamic";
+import IndigenousCommunityKnowledge from "./components/englishStatic/IndigenousCommunityKnowledge";
+import CulturallyRelevantPerspective from "./components/englishStatic/CulturallyRelevantPerspective";
 import Fatsil from "./components/Fatsil";
 import Main from "./components/Main";
 import SamplePage from "./components/SamplePage";
@@ -64,6 +66,14 @@ function App() {
                 <Route path="Groups" element={<Groups />} />
                 <Route path="Text" element={<TextSearch />} />
                 <Route path="EnglishStatic" element={<EnglishStatic />} />
+                <Route
+                  path="EnglishStatic/IndigenousCommunityKnowledge"
+                  element={<IndigenousCommunityKnowledge />}
+                />
+                <Route
+                  path="EnglishStatic/CulturallyRelevantPerspective"
+                  element={<CulturallyRelevantPerspective />}
+                />
                 <Route path="Indigenous" element={<Indigenous />} />
                 <Route path="EnglishDynamic" element={<EnglishDynamic />} />
                 <Route path="Fatsil" element={<Fatsil />} />
