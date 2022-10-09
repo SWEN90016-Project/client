@@ -3,6 +3,7 @@ import Carousel from "./carousel";
 import BlogSection from "./blogSection";
 import Audio from './Audio'
 import Files from "../files";
+import ImageCard from "../imageCard";
 import "./englishdynamic.css";
 import { useState,useEffect} from "react";
 import axios from "axios";
@@ -41,7 +42,10 @@ function EnglishDynamic() {
       
 
 
-      
+
+
+
+        
       <div className=" bg-absolute justify-end grid grid-rows-3 ">
       <div className="row-span-1">  
       <div class=" bg-shape bg-black bg-blur bg-opacity-50 -z-10 " > </div>
@@ -73,39 +77,13 @@ function EnglishDynamic() {
           <div className="mx-auto mt-12 grid max-w-lg gap-5 lg:max-w-none lg:grid-cols-3">
             
             {getState.data.map((item) => (
+              
               <div key={item._id} className="flex flex-col overflow-hidden rounded-lg shadow-lg">
-                <div className="flex-shrink-0">
-                  <img className="h-48 w-full object-cover" src={`http://localhost:9000/${item.filePath}`} alt="" />
-                </div>
-                <div className="flex flex-1 flex-col justify-between bg-white p-6">
-                  <div className="flex-1">
-                    <p className="text-sm font-medium text-indigo-600">
-                      <a href={`http://localhost:9000/${item.filePath}`} className="hover:underline">
-                        {item.text}
-                      </a>
-                    </p>
-                    <a href={`http://localhost:9000/${item.filePath}`} className="mt-2 block">
-                      <p className="text-xl font-semibold text-gray-900">{item.title}</p>
-                      <p className="mt-3 text-base text-gray-500">{item.text}</p>
-                    </a>
-                  </div>
-                  <div className="mt-6 flex items-center">
-                    <div className="flex-shrink-0">
-                   
-                    </div>
-                    <div className="ml-3">
-                      <p className="text-sm font-medium text-gray-900">
-                    
-                      </p>
-                      <div className="flex space-x-1 text-sm text-gray-500">
-                    
-                        <span aria-hidden="true">&middot;</span>
-                     
-                        <a href={`http://localhost:9000/${item.filePath}`} download={item._id}> Download Here </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                <ImageCard item={item} />
+             <a href={`http://localhost:9000/${item.filePath}`} download={item._id}> Download Here </a>
+
+                
+              
               </div>
             ))}
           </div>
@@ -127,9 +105,7 @@ function EnglishDynamic() {
       Upload your  text Language below  
       </p>
       <Files />
-      the next thing to do is download data capability
-      a landing page that has language and view hear data.
-      and permissions to show specific things
+
       </div>
 
       

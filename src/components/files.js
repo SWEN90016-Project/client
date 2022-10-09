@@ -86,8 +86,8 @@ function Files() {
     );
   }
   return (
-    <div className="bg-slate-400 h-screen overflow-auto">
-      <div className="h-screen">
+    <div className="bg-slate-400 h-1/2 overflow-auto px-4">
+      
         {/* the form to be submitted to the backend */}
 
         <Form
@@ -164,17 +164,8 @@ function Files() {
           <div></div>
         </Form>
 
-        <div className="p-2 grid grid-flow-cols gap-2">
-          {getState.data.map((item) => (
-            <div
-              key={item.title}
-              className="grid grid-flow-rows bg-white rounded-lg"
-            >
-              <ImageCard item={item} />
-            </div>
-          ))}
-        </div>
-      </div>
+    
+     
     </div>
   );
 }
