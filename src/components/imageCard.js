@@ -1,6 +1,7 @@
 // SHOULD NOT REQUIRE MUCH CHANGES JUST NEW FILE AND COPY THIS INTO IT THEN CALL IT
 import { useState } from "react";
 import axios from "axios";
+import FileDownload from "js-file-download";
 const API_URL = "http://localhost:9000/api/";
 function ImageCard(props) {
   const [edit, setEdit] = useState(false);
@@ -26,6 +27,24 @@ function ImageCard(props) {
       console.error(error);
     }
   };
+
+  // DOWNLOAD FUNCTION HERE MAKE SURE YOU IMPORT!!!!!
+  const download = async (file, id) => {
+    try {
+      await axios
+        .get(
+          API_URL + "download/" + id,
+          { responseType: "blob" } // !!!
+        )
+        .then((response) => {
+          console.log(response);
+
+          FileDownload(response.data, file);
+        });
+    } catch (error) {
+      console.error(error);
+    }
+  };
   return (
     <div>
       <div>
@@ -45,6 +64,15 @@ function ImageCard(props) {
           }}
         >
           Delete
+        </button>
+        <button
+          className="bg-red-400 rounded-lg p-2"
+          onClick={() => {
+            console.log(props.item);
+            download(props.item.fileName, props.item._id);
+          }}
+        >
+          Download
         </button>
       </div>
 
