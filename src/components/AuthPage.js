@@ -1,9 +1,9 @@
 import axios from "axios";
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState, useContext } from "react";
+import { UserTokenContext } from "../App";
 function AuthPage() {
   const [radio, setRadio] = useState("");
-
+  const { authLevel, username } = useContext(UserTokenContext);
   const onValueChange = (e) => {
     rad = e.target.value;
     setRadio(rad);
@@ -12,7 +12,7 @@ function AuthPage() {
   const sendRequest = async () => {
     try {
       axios.post("http://localhost:9000/api/newRequest", {
-        username: "default",
+        username: username,
         level: radio,
       });
     } catch (error) {
