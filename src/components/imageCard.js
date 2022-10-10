@@ -30,7 +30,18 @@ function ImageCard(props) {
     <div>
       <div>
         <h1>{props.item.title}</h1>
-        <button
+        <h1> Authored by :{props.item.postedBy}</h1>
+        
+        <h1> Posted at {props.item.createdAt}</h1>
+      </div>
+
+      <img
+        src={`http://localhost:9000/${props.item.filePath}`}
+        alt="{{ image }}"
+        width={500}
+      />
+
+<button
           className="bg-blue-400 rounded-lg p-2"
           onClick={() => {
             setEdit(true);
@@ -46,13 +57,6 @@ function ImageCard(props) {
         >
           Delete
         </button>
-      </div>
-
-      <img
-        src={`http://localhost:9000/${props.item.filePath}`}
-        alt="{{ image }}"
-        width={500}
-      />
       {edit ? (
         <div>
           <input placeholder="edit mode" onChange={onChangeEdit} />{" "}
@@ -65,7 +69,9 @@ function ImageCard(props) {
           >
             Finish
           </button>
+        
         </div>
+        
       ) : (
         <p>{props.item.text}</p>
       )}

@@ -14,10 +14,12 @@ const track = require("url:../assets/test.mp3");
 function EnglishDynamic() {
   const [getState, setGetState] = useState("defualt");
   const [getLoading, setGetLoading] = useState(true);
+  const [getdownload, setdownload] = useState(false);
 
   const getAllFiles = async () => {
     try {
       const response = await axios.get(API_URL + "getFile");
+     
       setGetState(response.data);
       setGetLoading(false);
     } catch (error) {
@@ -37,6 +39,14 @@ function EnglishDynamic() {
       </div>
     );
   }
+
+
+  
+    
+
+  // Request image from your server
+
+
   return (
     <div className=" h-full bg-white" style={{ minHeight: 1080 }}>
       
@@ -80,7 +90,10 @@ function EnglishDynamic() {
               
               <div key={item._id} className="flex flex-col overflow-hidden rounded-lg shadow-lg">
                 <ImageCard item={item} />
-             <a href={`http://localhost:9000/${item.filePath}`} download={item._id}> Download Here </a>
+                
+         
+           
+             <a href={`http://localhost:9000/${item.filePath}`} download="custom_name">Download</a>
 
                 
               
@@ -90,9 +103,15 @@ function EnglishDynamic() {
           <Audio
         urls={[
           track,
-          'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3',
-          'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3',
+          track,
+          track,
         ]}
+        cames={[
+          'track',
+          'track',
+          'track',
+        ]}
+       
       />
         </div>
       <div className=" h-1/2 justify-center align-middle grid grid-cols-3 ">

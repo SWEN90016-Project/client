@@ -72,11 +72,10 @@ const MultiPlayer = ({ urls }) => {
     </div>
   )
 }
-
-const Player = ({ player, toggle }) => (
+const Player = ({ player, toggle}) => (
   
   <div className=''>
-    <p>Stream URL: {player.url}</p>
+    <p>Play The below songs</p>
     <button  className="bg-red-400 rounded-lg p-2" onClick={toggle}>{player.playing ? 'Pause' : 'Play'}</button>
     <a href={player.url} download={player.url}> Download Here </a>
   </div>
