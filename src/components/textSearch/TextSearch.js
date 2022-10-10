@@ -87,8 +87,8 @@ function Text() {
 
   const getUserTexts = async () => {
     try {
-      const response = axios.get(
-        API_URL + "findUserTexts/" + "632bcf83ef3bfe02742070cb"
+      const response = await axios.get(
+        API_URL + "findUserTexts/" + JSON.parse(localStorage.getItem("user")).id
       );
       setGetText(response.data.data);
       setLoading(false);
@@ -123,10 +123,10 @@ function Text() {
 
   useEffect(() => {
     getAllUser();
-    // {
-    //   auth === "admin" ? getAllUser() : getUserTexts();
-    // }
-    getAllText();
+    {
+      authLevel === "admin" ? getAllText() : getUserTexts();
+    }
+    // getAllText();
     console.log(authLevel + username);
   }, []);
 
