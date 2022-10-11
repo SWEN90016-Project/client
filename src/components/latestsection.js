@@ -62,6 +62,7 @@ const posts = [
     readingTime: "12 min",
     author: {
       name: "Barry J Blake and Julie Reid",
+      name2: "Julie Reid",
       href: "https://press-files.anu.edu.au/downloads/press/p73361/pdf/book.pdf#page=185",
       imageUrl: AboriginalHuman,
     },
@@ -162,7 +163,9 @@ export default function lastestblogs() {
                     {post.description}
                   </p>
                 </a>
-                <div className="ml-3">
+
+                <div className="ml">
+                  <br></br>
                   <p className="text-sm font-medium text-gray-900">
                     <a href={post.author.href} className="hover:underline">
                       {post.author.name}
