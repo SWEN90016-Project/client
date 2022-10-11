@@ -8,7 +8,6 @@ import "./englishdynamic.css";
 import { useState,useEffect} from "react";
 import axios from "axios";
 const API_URL = "http://localhost:9000/api/";
-import AboriginalFlag from "../assets/aboriginal.png"
 const track = require("url:../assets/test.mp3");
 
 function EnglishDynamic() {
@@ -61,10 +60,10 @@ function EnglishDynamic() {
       <div class=" bg-shape bg-black bg-blur bg-opacity-50 -z-10 " > </div>
       </div>
       <div className="row-span-1"> 
-      <div class=" bg-shape bg-yellow bg-blur bg-opacity-50" > </div>
+      <div class=" bg-shape bg-yellow bg-blur bg-opacity-50 -z-10" > </div>
       </div>      
       <div className="row-span-1"> 
-      <div class=" bg-shape bg-red bg-blur bg-opacity-50" ></div>
+      <div class=" bg-shape bg-red bg-blur bg-opacity-50 -z-10" ></div>
       </div>      
       </div>
 
@@ -72,14 +71,17 @@ function EnglishDynamic() {
       <div>
             
             </div>
-      <div className=" z-40  text-2xl sm:text-4xl md:text-4xl lg:text-6xl xl:text-9xl container mx-auto  py-12 sm:py-24 justify-center px-24"> Indigenous dynamic page This page is for aboriginals .... </div>
+      <div className=" z-40  font-bold  text-2xl sm:text-4xl md:text-4xl lg:text-6xl xl:text-8xl container mx-auto  py-12 sm:py-24  px-12"> Indigenous Dynamic Page 
+      <h2 className="  text-gray-900  sm:text-4xl md:text-4xl lg:text-6xl xl:text-6xl container mx-auto   ">
+        Check out the latest Languages ,Text and Audio </h2>
+       </div>
+
 
 
 
 
       <div className="relative mx-auto max-w-7xl">
           <div className="text-center">
-            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Check out the latest languages and audio </h2>
             <p className="mx-auto mt-3 max-w-2xl text-xl text-gray-500 sm:mt-4">
             Language information shown below
             </p>
@@ -90,13 +92,7 @@ function EnglishDynamic() {
               
               <div key={item._id} className="flex flex-col overflow-hidden rounded-lg shadow-lg">
                 <ImageCard item={item} />
-                
-         
-           
-             <a href={`http://localhost:9000/${item.filePath}`} download="custom_name">Download</a>
 
-                
-              
               </div>
             ))}
           </div>
@@ -106,11 +102,7 @@ function EnglishDynamic() {
           track,
           track,
         ]}
-        cames={[
-          'track',
-          'track',
-          'track',
-        ]}
+       
        
       />
         </div>
@@ -121,7 +113,7 @@ function EnglishDynamic() {
       </div>
       <div className="  px-48 py-48 justify-items-center	">
       <p className="mx-auto mt-3 max-w-2xl text-4xl text-gray-500 sm:mt-4 py-8">
-      Upload your  text Language below  
+      Upload your  text Language files below  
       </p>
       <Files />
 

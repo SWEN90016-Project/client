@@ -1,6 +1,9 @@
 // SHOULD NOT REQUIRE MUCH CHANGES JUST NEW FILE AND COPY THIS INTO IT THEN CALL IT
 import { useState } from "react";
 import axios from "axios";
+import FileDownload from "js-file-download";
+import moment from "moment";
+
 const API_URL = "http://localhost:9000/api/";
 function ImageCard(props) {
   const [edit, setEdit] = useState(false);
@@ -26,13 +29,32 @@ function ImageCard(props) {
       console.error(error);
     }
   };
+
+
+
+  const download = async (file, id) => {
+    try {
+      await axios
+        .get(
+          API_URL + "download/" + id,
+          { responseType: "blob" } // !!!
+        )
+        .then((response) => {
+          console.log(response);
+
+          FileDownload(response.data, file);
+        });
+    } catch (error) {
+      console.error(error);
+    }
+  };
   return (
     <div>
       <div>
         <h1>{props.item.title}</h1>
         <h1> Authored by :{props.item.postedBy}</h1>
         
-        <h1> Posted at {props.item.createdAt}</h1>
+        <h1> Posted at {moment(props.item.createdAt).format("MMM Do YY")  }</h1>
       </div>
 
       <img
@@ -56,6 +78,15 @@ function ImageCard(props) {
           }}
         >
           Delete
+        </button>
+        <button
+          className="bg-green-400 rounded-lg p-2"
+          onClick={() => {
+            console.log(props.item);
+            download(props.item.fileName, props.item._id);
+          }}
+        >
+          Download
         </button>
       {edit ? (
         <div>
