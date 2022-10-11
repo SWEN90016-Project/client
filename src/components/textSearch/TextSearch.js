@@ -77,6 +77,7 @@ function Text() {
         id: selected._id,
         username: selected.username,
         postedBy: username,
+        postedById: JSON.parse(localStorage.getItem("user")).id,
       };
       await axios.post(API_URL + "addText", newTextJson);
       window.location.reload();
