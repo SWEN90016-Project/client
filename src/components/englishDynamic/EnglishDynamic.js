@@ -9,11 +9,12 @@ import { useState,useEffect} from "react";
 import axios from "axios";
 const API_URL = "http://localhost:9000/api/";
 const track = require("url:../assets/test.mp3");
+const track2 = require("url:../assets/singing.mp3");
 
+const track3 = require("url:../assets/riverdance.mp3");
 function EnglishDynamic() {
   const [getState, setGetState] = useState("defualt");
   const [getLoading, setGetLoading] = useState(true);
-  const [getdownload, setdownload] = useState(false);
 
   const getAllFiles = async () => {
     try {
@@ -72,8 +73,8 @@ function EnglishDynamic() {
             
             </div>
       <div className=" z-40  font-bold  text-2xl sm:text-4xl md:text-4xl lg:text-6xl xl:text-8xl container mx-auto  py-12 sm:py-24  px-12"> Indigenous Dynamic Page 
-      <h2 className="  text-gray-900  sm:text-4xl md:text-4xl lg:text-6xl xl:text-6xl container mx-auto   ">
-        Check out the latest Languages ,Text and Audio </h2>
+      <h2 className="  text-gray-900  sm:text-4xl md:text-4xl lg:text-4xl xl:text-4xl container mx-auto px-8  ">
+        Check out the latest languages , text and audio below. </h2>
        </div>
 
 
@@ -98,8 +99,8 @@ function EnglishDynamic() {
           </div>
           <Audio
         urls={[
-          track,
-          track,
+          track2,
+          track3,
           track,
         ]}
        

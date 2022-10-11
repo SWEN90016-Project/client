@@ -54,7 +54,7 @@ function ImageCard(props) {
         <h1>{props.item.title}</h1>
         <h1> Authored by :{props.item.postedBy}</h1>
         
-        <h1> Posted at {moment(props.item.createdAt).format("MMM Do YY")  }</h1>
+        <h1> Posted on {moment(props.item.createdAt).format("MMM Do YY")  }</h1>
       </div>
 
       <img
