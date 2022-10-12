@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import Audio from "../englishdynamic/Audio";
+import Audio from "../englishdynamic/Audio.js";
 const track = require("url:../assets/X2Download.app - Traditional Didgeridoo Rhythms by Lewis Burns, Aboriginal Australian Artist (128 kbps).mp3");
 import UML from "../assets/UML Draft.png";
 function EnglishStatic() {
