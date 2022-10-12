@@ -43,7 +43,7 @@ export default function Nav() {
               </Link>
             </div>
           </div>
-          <div className="ml-10 space-x-4">
+          <div className="ml-10 space-x-4 z-20">
             <Link
               to="/"
               className="inline-block rounded-md border border-transparent bg-indigo-500 py-2 px-4 text-base font-medium text-white hover:bg-opacity-75"
