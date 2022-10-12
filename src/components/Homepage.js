@@ -11,10 +11,10 @@ function Homepage() {
         {" "}
         <br></br>{" "}
       </h1>
-      <div class="columns-1"></div>
-      <body>
+
+      <div>
         <LatestBlogs></LatestBlogs>
-      </body>
+      </div>
       <footer> </footer>
     </div>
   );

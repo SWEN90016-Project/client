@@ -45,13 +45,17 @@ function EnglishDynamic() {
     <div className=" h-full bg-white" style={{ minHeight: 1080 }}>
       <div className=" bg-absolute justify-end grid grid-rows-3 ">
         <div className="row-span-1">
-          <div class=" bg-shape bg-black bg-blur bg-opacity-50 -z-10 "> </div>
+          <div className=" bg-shape bg-black bg-blur bg-opacity-50 -z-10 ">
+            {" "}
+          </div>
         </div>
         <div className="row-span-1">
-          <div class=" bg-shape bg-yellow bg-blur bg-opacity-50 -z-10"> </div>
+          <div className=" bg-shape bg-yellow bg-blur bg-opacity-50 -z-10">
+            {" "}
+          </div>
         </div>
         <div className="row-span-1">
-          <div class=" bg-shape bg-red bg-blur bg-opacity-50 -z-10"></div>
+          <div className=" bg-shape bg-red bg-blur bg-opacity-50 -z-10"></div>
         </div>
       </div>
       <div></div>

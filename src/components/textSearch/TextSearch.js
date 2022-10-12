@@ -127,7 +127,7 @@ function Text() {
       authLevel === "admin" ? getAllText() : getUserTexts();
     }
     // getAllText();
-    console.log(authLevel + username);
+    // console.log(authLevel + username);
   }, []);
 
   if (loading && loadingUsers) {

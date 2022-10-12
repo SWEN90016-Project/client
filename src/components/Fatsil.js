@@ -2,9 +2,9 @@ import { Link } from "react-router-dom";
 function Fatsil() {
   return (
     <div className="min-h-screen bg-orange-200 py-32">
-      <div class="flex items-center justify-center  ">
+      <div className="flex items-center justify-center  ">
         <div className="container px-6 py-10 mx-auto">
-          <div class="bg-orange-500 text-white   rounded-lg border shadow-lg p-10">
+          <div className="bg-orange-500 text-white   rounded-lg border shadow-lg p-10">
             <h2 className="  text-white sm:text-4xl md:text-4xl lg:text-4xl xl:text-4xl container mx-auto px-8 text-bold ">
               We would like to acknowledge the Traditional Custodians of the
               land on which we meet today, and pay our respects to their Elders
@@ -12,7 +12,7 @@ function Fatsil() {
               Strait Islander peoples viewing the page.
             </h2>
 
-            <div class="flex flex-col justify-between py-6 lg:mx-6 sm:text-xl mb-16">
+            <div className="flex flex-col justify-between py-6 lg:mx-6 sm:text-xl mb-16">
               <p className="text-md">
                 {" "}
                 To view the Legal requirements we are following in regards to

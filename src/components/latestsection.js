@@ -128,7 +128,7 @@ const posts = [
 
 export default function lastestblogs() {
   return (
-    <section class="bg-white dark:bg-gray-900">
+    <section className="bg-white dark:bg-gray-900">
       <div className="relative mx-auto max-w-7xl">
         <div className="text-center">
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
@@ -139,17 +139,17 @@ export default function lastestblogs() {
           </p>
         </div>
       </div>
-      <div class="container px-6 py-10 mx-auto">
-        <div class="grid grid-cols-1 gap-8 mt-8 md:mt-16 md:grid-cols-2">
+      <div className="container px-6 py-10 mx-auto">
+        <div className="grid grid-cols-1 gap-8 mt-8 md:mt-16 md:grid-cols-2">
           {posts.map((post) => (
-            <div class="lg:flex">
+            <div key={post.title} className="lg:flex">
               <img
-                class="object-cover w-full h-56 rounded-lg lg:w-64"
+                className="object-cover w-full h-56 rounded-lg lg:w-64"
                 src={post.imageUrl}
                 alt=""
               />
 
-              <div class="flex flex-col justify-between py-6 lg:mx-6">
+              <div className="flex flex-col justify-between py-6 lg:mx-6">
                 <p className="text-sm font-medium text-indigo-600">
                   <a href={post.category.href} className="hover:underline">
                     {post.category.name}

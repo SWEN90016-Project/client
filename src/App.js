@@ -26,7 +26,7 @@ function App() {
     () => {
       requestAnimationFrame(() => {
         if (url !== location.href) {
-          console.log("url changed");
+          // console.log("url changed");
           url = location.href;
         }
       });

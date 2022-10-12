@@ -1,5 +1,4 @@
 import axios from "axios";
-import { useState } from "react";
 const API_URL = "http://localhost:9000/";
 
 const register = (username, email, password) => {
@@ -34,7 +33,6 @@ const getAuthLevel = async () => {
   const token = JSON.parse(localStorage.getItem("user"));
 
   try {
-    console.log(JSON.parse(localStorage.getItem("user")));
     var config;
     if (token == null) {
       config = "null";

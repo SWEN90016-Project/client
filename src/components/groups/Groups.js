@@ -58,7 +58,7 @@ function Groups() {
     try {
       const response = await axios.get(API_URL + "getGroup");
       setAllGroups(response.data.data);
-      console.log(allGroups);
+      // console.log(allGroups);
       setLoading(false);
     } catch (error) {
       console.error(error);
@@ -115,7 +115,7 @@ function Groups() {
       authLevel === "admin" ? getAllGroups() : getUserGroups();
     }
 
-    console.log(allGroups);
+    // console.log(allGroups);
     // console.log(users[0].username);
   }, []);
   if (loading) {
