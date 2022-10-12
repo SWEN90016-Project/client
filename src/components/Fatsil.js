@@ -15,7 +15,7 @@ function Fatsil() {
     
     
       <div class="flex flex-col justify-between py-6 lg:mx-6 sm:text-xl mb-16">
-      <p className="text-md"> To view the Legal requirements we are following in regards to upholding and showing our upmost respect to the Aboriginal people can be viewed via clicking The button. </p> 
+      <p className="text-md"> To view the Legal requirements we are following in regards to upholding and showing our utmost respect to the Aboriginal people can be viewed via clicking The button. </p> 
       <p className="mb-16"> and from following the fatsil guidelines we have presented an excerpt below. Containing summaries of topics alongside direct information from the document deemed relevent to this project. </p> 
      
 
