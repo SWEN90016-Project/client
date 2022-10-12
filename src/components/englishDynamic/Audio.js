@@ -67,18 +67,18 @@ const MultiPlayer = ({ urls }) => {
   return (
     <div className="mx-auto mt-12 grid max-w-lg gap-5 lg:max-w-none lg:grid-cols-3 w-full ">
       {players.map((player, i) => (
-        <Player key={i} player={player} toggle={toggle(i)} />
+        <Player classname="" key={i} player={player} toggle={toggle(i)} />
       ))}
     </div>
   );
 };
 const Player = ({ player, toggle }) => (
-  <div className="">
-    <p>Play The below songs</p>
+  <div className="bg-white">
+    <p className="">Play The below songs TEST</p>
     <button className="bg-red-400 rounded-lg p-2" onClick={toggle}>
       {player.playing ? "Pause" : "Play"}
     </button>
-    <a href={player.url} download={player.url}>
+    <a className="text-white" href={player.url} download={player.url}>
       {" "}
       Download Here{" "}
     </a>
