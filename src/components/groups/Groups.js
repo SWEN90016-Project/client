@@ -13,7 +13,7 @@ function Groups() {
   const { authLevel, username } = useContext(UserTokenContext);
   const [allGroups, setAllGroups] = useState("");
   const [open, setOpen] = useState(false);
-  const [users, setUsers] = useState("");
+  const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [groupName, setgroupName] = useState("");
   const [selected, setSelected] = useState("select user");
@@ -120,13 +120,13 @@ function Groups() {
   }, []);
   if (loading) {
     return (
-      <div className="h-screen bg-gradient-to-b from-blue-100 via-blue-300 to-blue-500">
+      <div className="h-screen   bg-gradient-to-bl from-amber-50 via-indigo-200 to-amber-300">
         <h1>Loading</h1>
       </div>
     );
   }
   return (
-    <div className="py-2 h-screen bg-gradient-to-b from-blue-100 via-blue-300 to-blue-500">
+    <div className="py-2 h-screen bg-gradient-to-bl from-amber-50 via-indigo-200 to-amber-300">
       <div className="grid grid-flow-row">
         <div className="grid grid-flow-col items-center px-2">
           <h1 className="">Groups Page</h1>
@@ -155,73 +155,79 @@ function Groups() {
         </div>
         <div className="grid grid-flow-row gap-2 p-2 ">
           {/* filteredUsers.map((user) => ( */}
-          {allGroups.map((group) => (
-            <div key={group._id} className="rounded-lg hover:shadow-2xl">
-              <div className="grid grid-flow-col items-center bg-blue-500 p-2 rounded-t-md">
-                <div className="flex  flex-row gap-2">
-                  <p className="text-white text-lg font-medium">
-                    {group.groupName}
-                  </p>
-                </div>
-                <div className="flex place-self-end flex-row gap-2">
-                  {authLevel === "admin" ? (
-                    <button
-                      onClick={() => {
-                        setOpen(true);
-                        setSelectedGroup(group._id);
-                      }}
-                      className="place-self-end bg-blue-400 rounded-lg p-1 hover:bg-blue-700 hover:text-white"
-                    >
-                      Add User
-                    </button>
-                  ) : (
-                    <></>
-                  )}
-                  {authLevel === "admin" ? (
-                    <button
-                      onClick={() => {
-                        deleteGroup(group._id);
-                      }}
-                      className=" bg-rose-400 rounded-lg p-1 hover:bg-red-500 hover:text-white"
-                    >
-                      Delete
-                    </button>
-                  ) : (
-                    <></>
-                  )}
-                </div>
-              </div>
-
-              <div className="grid grid-cols-5 grid-flow-row py-4 bg-white rounded-b-md bg-opacity-60 backdrop-filter backdrop-blur-lg">
-                <div className="col-span-5 p-2 font-bold">Group Members:</div>
-                {group.userList.map((user, index) => (
-                  <div className="flex flex-row gap-1 p-2">
-                    <p
-                      key={group._id + user.username + index}
-                      className="px-2 text-medium"
-                    >
-                      {user.username}
+          {allGroups.length === 0 ? (
+            <div>
+              <p>No Groups Found!</p>
+            </div>
+          ) : (
+            allGroups.map((group) => (
+              <div key={group._id} className="rounded-lg hover:shadow-2xl">
+                <div className="grid grid-flow-col items-center bg-blue-500 p-2 rounded-t-md">
+                  <div className="flex  flex-row gap-2">
+                    <p className="text-white text-lg font-medium">
+                      {group.groupName}
                     </p>
+                  </div>
+                  <div className="flex place-self-end flex-row gap-2">
                     {authLevel === "admin" ? (
                       <button
                         onClick={() => {
-                          deleteUser(group._id, user._id);
+                          setOpen(true);
+                          setSelectedGroup(group._id);
                         }}
-                        className="border border-red-500 rounded-md hover:bg-red-500"
+                        className="place-self-end bg-blue-400 rounded-lg p-1 hover:bg-blue-700 hover:text-white"
                       >
-                        <TrashIcon
-                          className="h-5 w-5 text-red-400 hover:text-white"
-                          aria-hidden="true"
-                        />
+                        Add User
+                      </button>
+                    ) : (
+                      <></>
+                    )}
+                    {authLevel === "admin" ? (
+                      <button
+                        onClick={() => {
+                          deleteGroup(group._id);
+                        }}
+                        className=" bg-rose-400 rounded-lg p-1 hover:bg-red-500 hover:text-white"
+                      >
+                        Delete
                       </button>
                     ) : (
                       <></>
                     )}
                   </div>
-                ))}
+                </div>
+
+                <div className="grid grid-cols-5 grid-flow-row py-4 bg-white rounded-b-md bg-opacity-60 backdrop-filter backdrop-blur-lg">
+                  <div className="col-span-5 p-2 font-bold">Group Members:</div>
+                  {group.userList.map((user, index) => (
+                    <div className="flex flex-row gap-1 p-2">
+                      <p
+                        key={group._id + user.username + index}
+                        className="px-2 text-medium"
+                      >
+                        {user.username}
+                      </p>
+                      {authLevel === "admin" ? (
+                        <button
+                          onClick={() => {
+                            deleteUser(group._id, user._id);
+                          }}
+                          className="border border-red-500 rounded-md hover:bg-red-500"
+                        >
+                          <TrashIcon
+                            className="h-5 w-5 text-red-400 hover:text-white"
+                            aria-hidden="true"
+                          />
+                        </button>
+                      ) : (
+                        <></>
+                      )}
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
-          ))}
+            ))
+          )}
         </div>
       </div>
       <Transition.Root show={open} as={Fragment}>

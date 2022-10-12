@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
+import indigenousSymbol from "./assets/aboriginal-australia-128.png";
 const required = (value) => {
   if (!value) {
     return (
@@ -62,15 +63,17 @@ function Login() {
       <div>
         <Link to="/">
           <img
-            className="mx-auto h-12 w-auto"
-            src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+            className="mx-auto h-32 w-auto"
+            src={indigenousSymbol}
             alt="Your Company"
           />
         </Link>
-        <h1 className="p-4 text-center text-4xl font-bold text-blue-500">
+        <h1 className="p-4 text-center text-4xl font-bold text-amber-500">
           Sign in to your account
         </h1>
-        <h2 className="text-center text-xl text-blue-500">Login subtext</h2>
+        <h2 className="text-center text-xl text-amber-500">
+          Login to see research
+        </h2>
       </div>
       <div className=" mt-8 sm:mx-auto sm:w-full sm:max-w-md">
         <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
@@ -121,17 +124,17 @@ function Login() {
             </div>
             <button
               type="submit"
-              className="bg-blue-500 px-8 py-2 rounded-md text-white"
+              className="bg-amber-500 px-8 py-2 rounded-md text-white hover:bg-amber-700"
               disabled={loading}
             >
               Login
             </button>
-            <Link
+            {/* <Link
               to="/Homepage"
-              className="bg-blue-500 px-8 py-2 rounded-md text-white"
+              className="bg-amber-500 px-8 py-2 rounded-md text-white"
             >
               Temp
-            </Link>
+            </Link> */}
             {message && (
               <div className="form-group">
                 <div className="alert alert-danger" role="alert">

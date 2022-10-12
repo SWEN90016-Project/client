@@ -39,7 +39,7 @@ export default function NavDropdown() {
             <span>Language Pages</span>
             <ChevronDownIcon
               className={classNames(
-                open ? "text-gray-600" : "text-gray-400",
+                open ? "text-white" : "text-white",
                 "ml-2 h-5 w-5 group-hover:text-gray-500"
               )}
               aria-hidden="true"

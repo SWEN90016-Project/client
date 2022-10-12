@@ -6,6 +6,7 @@ import CheckButton from "react-validation/build/button";
 import { useNavigate } from "react-router-dom";
 import { isEmail } from "validator";
 import AuthService from "../Services/auth.service.js";
+import indigenousSymbol from "./assets/aboriginal-australia-128.png";
 const required = (value) => {
   if (!value) {
     return (
@@ -91,32 +92,36 @@ function Welcome() {
   return (
     <div className="h-screen ">
       <div className="grid grid-cols-3">
-        <div className="grid grid-cols-1 gap-4 place-items-center h-screen bg-blue-500">
-          <div className="grid grid-rows-2 h-96 place-items-center">
+        <div className="grid grid-cols-1 gap-4 place-items-center h-screen bg-amber-400">
+          <div className="grid grid-rows-auto h-96 place-items-center">
+            <img className="h-32 w-auto" src={indigenousSymbol} alt="" />
             <div>
               <h1 className="pb-4 px-4 text-center text-4xl font-bold text-white">
-                Sample Text Welcome to Page
+                Indigenous Languages: Revival and Reclamation Online Research
+                Tool
               </h1>
-              <h2 className="text-center text-xl text-white">subtext sample</h2>
+              <h2 className="text-center text-xl text-white">
+                To access this tool Login or Register a new account!
+              </h2>
             </div>
 
             <Link
               to="/Login"
-              className="border-2 border-white text-white px-8 py-2 rounded-md"
+              className="border-2 border-white text-white px-8 py-2 rounded-md hover:bg-white hover:border-amber-400 hover:text-black"
             >
               Login
             </Link>
-            
           </div>
         </div>
         <div className="h-screen bg-white col-span-2 grid grid-cols-1 gap-4 place-items-center">
           <div className="grid grid-flow-row place-items-center  rounded-lg">
             <div>
-              <h1 className="p-4 text-center text-7xl font-bold text-blue-500">
+              <h1 className="p-4 text-center text-7xl font-bold text-amber-500">
                 Create Account
               </h1>
-              <h2 className="text-center text-xl text-blue-500">
-                Register subtext
+              <h2 className="text-center text-xl text-amber-500">
+                Create an Account and apply for authorization on the
+                authorization page
               </h2>
             </div>
             <div className="w-full pt-4">
@@ -207,7 +212,7 @@ function Welcome() {
                   )}
                   <button
                     type="submit"
-                    className="bg-blue-500 px-8 py-2 rounded-md text-white"
+                    className="bg-amber-500 px-8 py-2 rounded-md text-white hover:bg-amber-800"
                   >
                     Register
                   </button>

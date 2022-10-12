@@ -12,9 +12,10 @@ function Text() {
   const [query, setQuery] = useState("");
   const [textQuery, setTextQuery] = useState("");
   const [loading, setLoading] = useState(true);
-  const [getText, setGetText] = useState("");
+  const [loadingUsers, setLoadingUsers] = useState(true);
+  const [getText, setGetText] = useState([]);
   const [text, setText] = useState("");
-  const [users, setUsers] = useState("");
+  const [users, setUsers] = useState([]);
   const [open, setOpen] = useState(false);
   const [selectedText, setSelectedText] = useState("");
   const cancelButtonRef = useRef(null);
@@ -113,7 +114,7 @@ function Text() {
     try {
       const response = await axios.get(API_URL + "userInfo");
       setUsers(response.data.data);
-
+      setLoadingUsers(false);
       // setLoading(false);
     } catch (error) {
       console.error(error);
@@ -129,15 +130,15 @@ function Text() {
     console.log(authLevel + username);
   }, []);
 
-  if (loading) {
+  if (loading && loadingUsers) {
     return (
-      <div className="h-screen bg-gradient-to-b from-blue-100 via-blue-300 to-blue-500">
+      <div className="h-screen  bg-gradient-to-bl from-amber-50 via-indigo-200 to-amber-300">
         <h1>Loading</h1>
       </div>
     );
   }
   return (
-    <div className="grid  grid-cols-4 min-h-screen bg-gradient-to-b from-blue-100 via-blue-300 to-blue-500">
+    <div className="grid  grid-cols-4 min-h-screen  bg-gradient-to-bl from-amber-50 via-indigo-200 to-amber-300">
       <div className="col-span-3  mr-2 ml-2">
         <input
           className="mt-2 mb-2 rounded-md"

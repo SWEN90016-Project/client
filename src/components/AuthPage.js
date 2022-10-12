@@ -20,15 +20,15 @@ function AuthPage() {
     }
   };
   return (
-    <div className="h-screen bg-blue-400">
-      <div className="grid grid-cols-1 gap-4 place-items-center h-screen bg-blue-500">
-        <div className="grid grid-rows-2 h-96 place-items-center bg-white rounded-md py-2 px-8 shadow-md">
+    <div className="h-screen">
+      <div className="grid grid-cols-1 gap-4 place-items-center h-screen bg-white">
+        <div className="grid grid-rows-2 h-96 place-items-center bg-amber-500 rounded-md py-2 px-8 shadow-md">
           <div>
-            <h1 className="pb-4 px-4 text-center text-4xl font-bold">
+            <h1 className="pb-4 px-4 text-center text-4xl font-bold text-white">
               Request Page
             </h1>
             <div>
-              <label className="text-base font-medium text-gray-900">
+              <label className="text-base font-medium text-gray-900 ">
                 Levels
               </label>
 
@@ -87,7 +87,7 @@ function AuthPage() {
             </div>
           </div>
           <button
-            className="border-2 border-blue-500 p-2 rounded-md"
+            className="border-2 border-white text-white px-8 py-2 rounded-md hover:bg-white hover:border-amber-400 hover:text-black"
             onClick={() => {
               console.log(radio);
               sendRequest();
