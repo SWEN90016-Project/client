@@ -2,8 +2,8 @@ import { Link } from "react-router-dom";
 import { UserTokenContext } from "../../App";
 import { useContext } from "react";
 function Indigenous() {
-  const auth = useContext(UserTokenContext);
-  if (auth === "admin") {
+  const { authLevel, username } = useContext(UserTokenContext);
+  if ((authLevel === "admin") | (authLevel === "client")) {
     return (
       <div className="h-screen bg-blue-400">
         <h1 className="text-black">Indigenous</h1>

@@ -17,7 +17,7 @@ import AuthService from "./Services/auth.service";
 import { useEffect, useState, createContext } from "react";
 export const UserTokenContext = createContext(null);
 function App() {
-  const [authLevel, setAuthLevel] = useState("new");
+  const [authLevel, setAuthLevel] = useState("read");
   const [username, setUsername] = useState("Null");
   const [loading, setLoading] = useState(true);
   let url = location.href;

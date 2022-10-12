@@ -36,7 +36,7 @@ export default function NavDropdown() {
               "group inline-flex items-center rounded-md text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
             )}
           >
-            <span>Solutions</span>
+            <span>Language Pages</span>
             <ChevronDownIcon
               className={classNames(
                 open ? "text-gray-600" : "text-gray-400",

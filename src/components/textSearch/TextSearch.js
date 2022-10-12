@@ -18,9 +18,7 @@ function Text() {
   const [open, setOpen] = useState(false);
   const [selectedText, setSelectedText] = useState("");
   const cancelButtonRef = useRef(null);
-  const getUser = () => {
-    console.log(AuthService.getCurrentUser());
-  };
+
   const onChangeSearch = (e) => {
     const text = e.target.value;
 
@@ -77,6 +75,7 @@ function Text() {
         id: selected._id,
         username: selected.username,
         postedBy: username,
+        postedById: JSON.parse(localStorage.getItem("user")).id,
       };
       await axios.post(API_URL + "addText", newTextJson);
       window.location.reload();
@@ -87,8 +86,8 @@ function Text() {
 
   const getUserTexts = async () => {
     try {
-      const response = axios.get(
-        API_URL + "findUserTexts/" + "632bcf83ef3bfe02742070cb"
+      const response = await axios.get(
+        API_URL + "findUserTexts/" + JSON.parse(localStorage.getItem("user")).id
       );
       setGetText(response.data.data);
       setLoading(false);
@@ -123,10 +122,10 @@ function Text() {
 
   useEffect(() => {
     getAllUser();
-    // {
-    //   auth === "admin" ? getAllUser() : getUserTexts();
-    // }
-    getAllText();
+    {
+      authLevel === "admin" ? getAllText() : getUserTexts();
+    }
+    // getAllText();
     console.log(authLevel + username);
   }, []);
 
@@ -138,7 +137,7 @@ function Text() {
     );
   }
   return (
-    <div className="grid grid-cols-4 h-screen bg-gradient-to-b from-blue-100 via-blue-300 to-blue-500">
+    <div className="grid grid-cols-4 min-h-screen bg-gradient-to-b from-blue-100 via-blue-300 to-blue-500">
       <div className="col-span-3  mr-2 ml-2">
         <input
           className="mt-2 mb-2 rounded-md"

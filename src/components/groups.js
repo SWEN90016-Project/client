@@ -141,7 +141,7 @@ function Groups() {
         <div className="grid grid-flow-row gap-2 p-2 ">
           {/* filteredUsers.map((user) => ( */}
 
-          {allGroups.map((group) => (
+          {allGroups?.map((group) => (
             <div key={group._id} className="p-2 bg-white rounded-lg">
               <div className="grid grid-flow-col">
                 <div className="flex flex-row">
