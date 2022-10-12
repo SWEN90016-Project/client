@@ -1,11 +1,11 @@
-// SHOULD NOT REQUIRE MUCH CHANGES JUST NEW FILE AND COPY THIS INTO IT THEN CALL IT
 import { useState, useContext } from "react";
+import ReactPlayer from "react-player";
 import axios from "axios";
 import FileDownload from "js-file-download";
 import moment from "moment";
-import { UserTokenContext } from "../App";
+import { UserTokenContext } from "../../App";
 const API_URL = "http://localhost:9000/api/";
-function ImageCard(props) {
+function AudioV2(props) {
   const { authLevel, username } = useContext(UserTokenContext);
   const [edit, setEdit] = useState(false);
   const [editText, setEditText] = useState("");
@@ -53,11 +53,6 @@ function ImageCard(props) {
         <h1> Posted on {moment(props.item.createdAt).format("MMM Do YY")}</h1>
       </div>
 
-      <img
-        src={`http://localhost:9000/${props.item.filePath}`}
-        alt="{{ image }}"
-        width={500}
-      />
       {authLevel === "admin" ||
       authLevel === "update" ||
       authLevel === "delete" ? (
@@ -109,8 +104,19 @@ function ImageCard(props) {
       ) : (
         <p>{props.item.text}</p>
       )}
+      <div className="relative pt-[20%]">
+        <ReactPlayer
+          className="absolute"
+          url={`http://localhost:9000/${props.item.filePath}`}
+          controls
+          preload="none"
+          width="100%"
+          height="100%"
+          // light={"../assets/aboriginalCool.jpg"}
+        />
+      </div>
     </div>
   );
 }
 
-export default ImageCard;
+export default AudioV2;
