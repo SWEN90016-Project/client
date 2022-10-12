@@ -1,15 +1,18 @@
 import { Link } from "react-router-dom";
+import Audio from "../englishdynamic/Audio";
+const track = require("url:../assets/X2Download.app - Traditional Didgeridoo Rhythms by Lewis Burns, Aboriginal Australian Artist (128 kbps).mp3");
+import UML from "../assets/UML Draft.png";
 function EnglishStatic() {
   return (
     <div className="h-screen">
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3">
-        <div className="grid grid-cols-1 gap-4 place-items-center h-screen bg-red-500">
-          <div className="grid grid-rows-2 h-96 place-items-center">
+        <div className="grid grid-cols-1 place-items-center h-screen bg-red-500">
+          <div className="grid grid-rows-2 relative h-96 place-items-center">
             <div>
-              <h1 className="pb-4 px-4 text-center text-4xl font-bold text-white">
+              <h1 className="pb-4 px-4 text-center text-xl sm:text-lg md:text-lg lg:text-4xl xl:text-4xl font-bold text-white">
                 Further Indigenous Language Learning Subpages
               </h1>
-              <h2 className="text-center text-xl text-white">
+              <h2 className="text-center text-xl sm:text-lg md:text-lg lg:text-4xl xl:text-4xl text-white">
                 To greater enrich your learning please visit these subpages
               </h2>
             </div>
@@ -29,39 +32,103 @@ function EnglishStatic() {
             </Link>
           </div>
         </div>
-        <div className="h-screen bg-yellow-300  col-span-2 grid grid-cols-2 items-center justify-center">
-          <figure class="relative max-w-full">
-            <a href="#">
-              <img
-                class="rounded-lg"
-                src="https://cdn.pixabay.com/photo/2016/07/25/08/44/aboriginal-art-1540115_1280.jpg"
-                alt="image description"
-              ></img>
-            </a>
-          </figure>
-          <div className="grid grid-rows-2 h-96 place-items-center">
-            <h1 className=" pt-11  px-4 text-center text-4xl font-bold text-white">
+        <div className=" bg-yellow-300  h-screen col-span-2 grid grid-cols-2 items-center justify-center">
+          <div className="relative col-span-2 grid grid-cols-1 items-center justify-center">
+            <h1 className=" relative align-bottom justify-center place-items-center px-4 text-center text-4xl sm:text-2xl md:text-2xl lg:text-4xl xl:text-4xl font-bold text-white">
+              DATA TYPES DISPLAYED BELOW:
+            </h1>
+
+            <h1 className=" relative align-bottom  px-4 pt-8 text-center text-4xl sm:text-2xl md:text-2xl lg:text-4xl xl:text-4xl font-bold text-white">
               It is of incredible importance to many individuals and communities
               that this project is completed to a high standard.
             </h1>
-          </div>
-          <div className="grid grid-rows-2 h-96 place-items-center">
-            <h1 className="pt-3 px-4 text-center text-4xl font-bold text-white">
+            <h1 className="relative align-bottom px-4 pt-8 text-center text-4xl sm:text-2xl md:text-2xl lg:text-4xl xl:text-4xl font-bold text-white">
               Because then all forms of language and culture can be safeguarded
               and preserved throughout history.
             </h1>
           </div>
-          <figure class="relative max-w-full">
-            <a href="#">
-              <img
-                class="rounded-lg"
-                src="https://www.lawyersweekly.com.au/images/articleImages-850x492/Aboriginal-flag-lw.jpg"
-                alt="image description"
-              ></img>
-            </a>
-          </figure>
+
+          <div className="relative col-span-5 grid grid-cols-5 items-center justify-center">
+            <svg
+              class="w-10 h-10"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+              ></path>
+            </svg>
+            <svg
+              class="w-10 h-10"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
+              ></path>
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+              ></path>
+            </svg>
+            <svg
+              class="w-10 h-10"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+              ></path>
+            </svg>
+            <svg
+              class="w-10 h-10"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+              ></path>
+            </svg>
+            <svg
+              class="w-10 h-10"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+              ></path>
+            </svg>
+          </div>
         </div>
       </div>
+
       <div className="grid grid-cols-5 md:grid-cols-5  lg:grid-cols-5 place-items-center bg-black">
         <figure class=" pt-5 relative max-w-sm">
           <a href="#">
@@ -109,7 +176,7 @@ function EnglishStatic() {
           </a>
         </figure>
       </div>
-      <div className="pt-5 pb-5 grid grid-cols-1 md:grid-cols-1 lg:grid-cols-1 place-items-center bg-black">
+      <div className="pt-5 pb-5 grid grid-cols-2 md:grid-cols-2 lg:grid-cols-2 place-items-center bg-black">
         <figure class="relative max-w-full">
           <a href="#">
             <img
@@ -119,12 +186,17 @@ function EnglishStatic() {
             ></img>
           </a>
         </figure>
-        <Link
-          to="https://www.youtube.com/watch?v=nN-542IYoE0"
-          className="bg-blue-500 px-8 py-2 rounded-md text-white"
-        >
-          Sample Music
-        </Link>
+        <Audio urls={[track]} place-items-center />
+      </div>
+      <h1 className=" relative align-bottom justify-center place-items-center px-4 text-center text-4xl sm:text-2xl md:text-2xl lg:text-4xl xl:text-4xl font- bg-black text-white">
+        UML Design
+      </h1>
+      <div className="pt-5 pb-5 grid grid-cols-3 md:grid-cols-3 lg:grid-cols-3 place-items-center bg-black">
+        <figure class="relative max-w-full col-span-3">
+          <a href="#">
+            <img class="rounded-lg" src={UML} alt="image description"></img>
+          </a>
+        </figure>
       </div>
     </div>
   );
