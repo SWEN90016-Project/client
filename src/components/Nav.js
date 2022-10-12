@@ -3,10 +3,10 @@ import NavDropdown from "./NavDropdown";
 
 export default function Nav() {
   return (
-    <header className="bg-indigo-600">
+    <header className="bg-indigo-600 z-100 z-10">
       <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8" aria-label="Top">
         <div className="flex w-full items-center justify-between border-b border-indigo-500 py-6 lg:border-none">
-          <div className="flex items-center">
+          <div className="flex items-center z-30">
             <Link to="/Homepage">
               {/* <span className="sr-only">Your Company</span> */}
               <img
