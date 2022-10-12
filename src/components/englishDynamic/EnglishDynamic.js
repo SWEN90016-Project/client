@@ -1,19 +1,18 @@
-import { Link } from "react-router-dom";
-import Carousel from "./carousel";
-import BlogSection from "./blogSection";
 import Audio from "./Audio";
 import Files from "../files";
 import ImageCard from "../imageCard";
 import "./englishdynamic.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import AudioV2 from "./AudioV2";
 import axios from "axios";
+import { UserTokenContext } from "../../App";
 const API_URL = "http://localhost:9000/api/";
 const track = require("url:../assets/test.mp3");
 const track2 = require("url:../assets/singing.mp3");
 
 const track3 = require("url:../assets/riverdance.mp3");
 function EnglishDynamic() {
+  const { authLevel, username } = useContext(UserTokenContext);
   const [getState, setGetState] = useState("defualt");
   const [getLoading, setGetLoading] = useState(true);
 
@@ -56,7 +55,7 @@ function EnglishDynamic() {
         </div>
       </div>
       <div></div>
-      <div className=" z-40  font-bold  text-2xl sm:text-4xl md:text-4xl lg:text-6xl xl:text-8xl container mx-auto  py-12 sm:py-24  px-12">
+      <div className="  font-bold  text-2xl sm:text-4xl md:text-4xl lg:text-6xl xl:text-8xl container mx-auto  py-12 sm:py-24  px-12">
         {" "}
         Indigenous Dynamic Page
         <h2 className="  text-gray-900  sm:text-4xl md:text-4xl lg:text-4xl xl:text-4xl container mx-auto px-8  ">
@@ -95,12 +94,19 @@ function EnglishDynamic() {
       <div className=" h-1/2 justify-center align-middle grid grid-cols-3 ">
         <div className=" col-start-2 col-end-3"></div>
       </div>
-      <div className="  px-48 py-48 justify-items-center	">
-        <p className="mx-auto mt-3 max-w-2xl text-4xl text-gray-500 sm:mt-4 py-8">
-          Upload your text Language files below
-        </p>
-        <Files />
-      </div>
+      {authLevel === "admin" ||
+      authLevel === "create" ||
+      authLevel === "update" ||
+      authLevel === "delete" ? (
+        <div className="  px-48 py-48 justify-items-center	">
+          <p className="mx-auto mt-3 max-w-2xl text-4xl text-gray-500 sm:mt-4 py-8">
+            Upload your text Language files below
+          </p>
+          <Files />
+        </div>
+      ) : (
+        <></>
+      )}
     </div>
   );
 }

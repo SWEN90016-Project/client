@@ -137,7 +137,7 @@ function Text() {
     );
   }
   return (
-    <div className="grid grid-cols-4 min-h-screen bg-gradient-to-b from-blue-100 via-blue-300 to-blue-500">
+    <div className="grid  grid-cols-4 min-h-screen bg-gradient-to-b from-blue-100 via-blue-300 to-blue-500">
       <div className="col-span-3  mr-2 ml-2">
         <input
           className="mt-2 mb-2 rounded-md"

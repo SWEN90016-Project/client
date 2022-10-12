@@ -8,7 +8,7 @@ const API_URL = "http://localhost:9000/api/";
 function ImageCard(props) {
   const { authLevel, username } = useContext(UserTokenContext);
   const [edit, setEdit] = useState(false);
-  const [editText, setEditText] = useState("");
+  const [editText, setEditText] = useState(props.item.text);
   const onChangeEdit = (e) => {
     const edit = e.target.value;
     setEditText(edit);
@@ -62,7 +62,7 @@ function ImageCard(props) {
       authLevel === "update" ||
       authLevel === "delete" ? (
         <button
-          className="bg-blue-400 rounded-lg p-2"
+          className="bg-blue-400 rounded-lg p-1 mr-2 hover:bg-blue-700 hover:text-white"
           onClick={() => {
             setEdit(true);
           }}
@@ -74,7 +74,7 @@ function ImageCard(props) {
       )}
       {authLevel === "admin" || authLevel === "delete" ? (
         <button
-          className="bg-red-400 rounded-lg p-2"
+          className="bg-rose-400 rounded-lg p-1 mr-2 hover:bg-red-500 hover:text-white"
           onClick={() => {
             deleteFile(props.item._id);
           }}
@@ -85,7 +85,7 @@ function ImageCard(props) {
         <></>
       )}
       <button
-        className="bg-green-400 rounded-lg p-2"
+        className="bg-green-400 rounded-lg p-1 hover:bg-green-500 hover:text-white"
         onClick={() => {
           console.log(props.item);
           download(props.item.fileName, props.item._id);
@@ -95,9 +95,14 @@ function ImageCard(props) {
       </button>
       {edit ? (
         <div>
-          <input placeholder="edit mode" onChange={onChangeEdit} />{" "}
+          <input
+            className="border-2 border-blue-500 mr-2 rounded-md"
+            placeholder="Edit mode"
+            onChange={onChangeEdit}
+            value={editText}
+          />
           <button
-            className="bg-blue-400"
+            className="bg-blue-400 rounded-lg p-1 hover:bg-blue-700 hover:text-white"
             onClick={() => {
               setEdit(false);
               updateFile(props.item._id);
