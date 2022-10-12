@@ -1,18 +1,17 @@
 import axios from "axios";
-import { useEffect, useState, Fragment, useRef } from "react";
+import { useEffect, useState, Fragment, useRef, useContext } from "react";
 import { Dialog, Transition, Combobox } from "@headlessui/react";
+import { UserTokenContext } from "../../App";
 import {
   CheckIcon,
   ChevronUpDownIcon,
   TrashIcon,
 } from "@heroicons/react/20/solid";
-// test
-// import { CheckIcon } from "@heroicons/react/outline";
 const API_URL = "http://localhost:9000/api/";
 
 function Groups() {
+  const { authLevel, username } = useContext(UserTokenContext);
   const [allGroups, setAllGroups] = useState("");
-  const [userGroups, setUserGroups] = useState("");
   const [open, setOpen] = useState(false);
   const [users, setUsers] = useState("");
   const [loading, setLoading] = useState(true);
@@ -60,14 +59,19 @@ function Groups() {
       const response = await axios.get(API_URL + "getGroup");
       setAllGroups(response.data.data);
       console.log(allGroups);
+      setLoading(false);
     } catch (error) {
       console.error(error);
     }
   };
-  const getUserGroups = async (id) => {
+  const getUserGroups = async () => {
     try {
-      const response = await axios.get(API_URL + "getUserGroup/" + id);
-      setUserGroups(response);
+      const response = await axios.get(
+        API_URL + "getUserGroup/" + JSON.parse(localStorage.getItem("user")).id
+      );
+      setAllGroups(response.data.groups);
+      console.log(allGroups);
+      setLoading(false);
     } catch (error) {
       console.error(error);
     }
@@ -98,7 +102,6 @@ function Groups() {
       const response = await axios.get(API_URL + "userInfo");
       setUsers(response.data.data);
 
-      setLoading(false);
       // setSelected(users[0].username);
     } catch (error) {
       console.error(error);
@@ -106,9 +109,12 @@ function Groups() {
   };
 
   useEffect(() => {
-    getAllGroups();
-
+    // getAllGroups();
     getAllUser();
+    {
+      authLevel === "admin" ? getAllGroups() : getUserGroups();
+    }
+
     console.log(allGroups);
     // console.log(users[0].username);
   }, []);
@@ -124,28 +130,32 @@ function Groups() {
       <div className="grid grid-flow-row">
         <div className="grid grid-flow-col items-center px-2">
           <h1 className="">Groups Page</h1>
-          <div className="place-self-end flex flex-row gap-2">
-            <input
-              id="text"
-              name="text"
-              type="text"
-              placeholder="Group Name"
-              onChange={onChangeGroupName}
-              className=" block appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
-            />
-            <button
-              onClick={() => {
-                addGroup(groupName);
-              }}
-              className="bg-blue-400 rounded-lg p-2 hover:bg-blue-700 hover:text-white"
-            >
-              Add
-            </button>
-          </div>
+          {authLevel === "admin" ? (
+            <div className="place-self-end flex flex-row gap-2">
+              <input
+                id="text"
+                name="text"
+                type="text"
+                placeholder="Group Name"
+                onChange={onChangeGroupName}
+                className=" block appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+              />
+              <button
+                onClick={() => {
+                  addGroup(groupName);
+                }}
+                className="bg-blue-400 rounded-lg p-2 hover:bg-blue-700 hover:text-white"
+              >
+                Add
+              </button>
+            </div>
+          ) : (
+            <></>
+          )}
         </div>
         <div className="grid grid-flow-row gap-2 p-2 ">
           {/* filteredUsers.map((user) => ( */}
-          {allGroups?.map((group) => (
+          {allGroups.map((group) => (
             <div key={group._id} className="rounded-lg hover:shadow-2xl">
               <div className="grid grid-flow-col items-center bg-blue-500 p-2 rounded-t-md">
                 <div className="flex  flex-row gap-2">
@@ -154,23 +164,31 @@ function Groups() {
                   </p>
                 </div>
                 <div className="flex place-self-end flex-row gap-2">
-                  <button
-                    onClick={() => {
-                      setOpen(true);
-                      setSelectedGroup(group._id);
-                    }}
-                    className="place-self-end bg-blue-400 rounded-lg p-1 hover:bg-blue-700 hover:text-white"
-                  >
-                    Add User
-                  </button>
-                  <button
-                    onClick={() => {
-                      deleteGroup(group._id);
-                    }}
-                    className=" bg-rose-400 rounded-lg p-1 hover:bg-red-500 hover:text-white"
-                  >
-                    Delete
-                  </button>
+                  {authLevel === "admin" ? (
+                    <button
+                      onClick={() => {
+                        setOpen(true);
+                        setSelectedGroup(group._id);
+                      }}
+                      className="place-self-end bg-blue-400 rounded-lg p-1 hover:bg-blue-700 hover:text-white"
+                    >
+                      Add User
+                    </button>
+                  ) : (
+                    <></>
+                  )}
+                  {authLevel === "admin" ? (
+                    <button
+                      onClick={() => {
+                        deleteGroup(group._id);
+                      }}
+                      className=" bg-rose-400 rounded-lg p-1 hover:bg-red-500 hover:text-white"
+                    >
+                      Delete
+                    </button>
+                  ) : (
+                    <></>
+                  )}
                 </div>
               </div>
 
@@ -184,17 +202,21 @@ function Groups() {
                     >
                       {user.username}
                     </p>
-                    <button
-                      onClick={() => {
-                        deleteUser(group._id, user._id);
-                      }}
-                      className="border border-red-500 rounded-md hover:bg-red-500"
-                    >
-                      <TrashIcon
-                        className="h-5 w-5 text-red-400 hover:text-white"
-                        aria-hidden="true"
-                      />
-                    </button>
+                    {authLevel === "admin" ? (
+                      <button
+                        onClick={() => {
+                          deleteUser(group._id, user._id);
+                        }}
+                        className="border border-red-500 rounded-md hover:bg-red-500"
+                      >
+                        <TrashIcon
+                          className="h-5 w-5 text-red-400 hover:text-white"
+                          aria-hidden="true"
+                        />
+                      </button>
+                    ) : (
+                      <></>
+                    )}
                   </div>
                 ))}
               </div>

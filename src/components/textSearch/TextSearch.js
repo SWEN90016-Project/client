@@ -18,9 +18,7 @@ function Text() {
   const [open, setOpen] = useState(false);
   const [selectedText, setSelectedText] = useState("");
   const cancelButtonRef = useRef(null);
-  const getUser = () => {
-    console.log(AuthService.getCurrentUser());
-  };
+
   const onChangeSearch = (e) => {
     const text = e.target.value;
 
@@ -139,7 +137,7 @@ function Text() {
     );
   }
   return (
-    <div className="grid grid-cols-4 h-screen bg-gradient-to-b from-blue-100 via-blue-300 to-blue-500">
+    <div className="grid grid-cols-4 min-h-screen bg-gradient-to-b from-blue-100 via-blue-300 to-blue-500">
       <div className="col-span-3  mr-2 ml-2">
         <input
           className="mt-2 mb-2 rounded-md"
