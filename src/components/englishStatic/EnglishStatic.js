@@ -4,7 +4,7 @@ const track = require("url:../assets/X2Download.app - Traditional Didgeridoo Rhy
 import UML from "../assets/UML Draft.png";
 function EnglishStatic() {
   return (
-    <div className="min-h-screen bg-gradient-to-bl from-amber-50 via-red-200 to-yellow-200">
+    <div className="">
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 divide-x divide-black">
         <div className="grid grid-cols-1 place-items-center h-screen ">
           <div className="grid grid-rows-2 relative h-96 place-items-center">

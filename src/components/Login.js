@@ -59,24 +59,22 @@ function Login() {
     }
   };
   return (
-    <div className="flex h-screen flex-col justify-center py-12 sm:px-6 lg:px-8 bg-slate-50">
-      <div>
-        <Link to="/">
-          <img
-            className="mx-auto h-32 w-auto rotate-180"
-            src={indigenousSymbol}
-            alt="Your Company"
-          />
-        </Link>
-        <h1 className="p-4 text-center text-4xl font-bold text-amber-400">
-          Sign in to your account
-        </h1>
-        <h2 className="text-center text-xl text-amber-400">
-          Login to see research
-        </h2>
-      </div>
-      <div className=" mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-        <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
+    <div className="flex flex-col justify-center py-12 sm:px-6 lg:px-8 min-h-screen  bg-gradient-to-bl from-amber-50 via-red-200 to-yellow-200 ">
+      <div className=" mt-2 sm:mx-auto sm:w-full sm:max-w-md rounded-lg bg-white bg-opacity-30 backdrop-blur-lg drop-shadow-lg border">
+        <div className=" py-8 px-4 shadow sm:rounded-lg sm:px-10">
+          <Link to="/">
+            <img
+              className="mx-auto h-32 w-auto rotate-180"
+              src={indigenousSymbol}
+              alt="Your Company"
+            />
+          </Link>
+          <h1 className="p-4 text-center text-4xl font-bold text-amber-400">
+            Sign in to your account
+          </h1>
+          <h2 className="text-center text-xl text-amber-400 pb-8">
+            Login to see research
+          </h2>
           <Form className="space-y-6" onSubmit={handleLogin} ref={form}>
             <div>
               <label

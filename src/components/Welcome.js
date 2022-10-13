@@ -90,10 +90,10 @@ function Welcome() {
     }
   };
   return (
-    <div className="h-screen ">
-      <div className="grid grid-cols-3">
-        <div className="grid grid-cols-1 gap-4 place-items-center h-screen bg-amber-400">
-          <div className="grid grid-rows-auto h-96 place-items-center">
+    <div className=" min-h-screen  bg-gradient-to-bl from-amber-50 via-red-200 to-yellow-200">
+      <div className="grid grid-cols-3 mx-auto max-w-7xl divide-x-4 divide-amber-400 gap-2 bg-white bg-opacity-30 backdrop-blur-lg drop-shadow-lg ">
+        <div className="grid grid-cols-1 gap-4 place-items-center ">
+          <div className="grid grid-rows-auto place-items-center">
             <img
               className="h-32 w-auto rotate-180"
               src={indigenousSymbol}
@@ -108,16 +108,15 @@ function Welcome() {
                 To access this tool Login or Register a new account!
               </h2>
             </div>
-
             <Link
               to="/Login"
-              className="border-2 border-white text-white px-8 py-2 rounded-md hover:bg-white hover:border-amber-400 hover:text-black"
+              className="border-2 border-white text-white px-8 py-2 mt-8 rounded-md hover:bg-white hover:border-amber-400 hover:text-black"
             >
               Login
             </Link>
           </div>
         </div>
-        <div className="h-screen bg-white col-span-2 grid grid-cols-1 gap-4 place-items-center">
+        <div className="h-screen col-span-2 grid grid-cols-1 gap-4 place-items-center">
           <div className="grid grid-flow-row place-items-center  rounded-lg">
             <div>
               <h1 className="p-4 text-center text-7xl font-bold text-amber-400">

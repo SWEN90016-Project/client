@@ -42,12 +42,12 @@ function EnglishDynamic() {
   // Request image from your server
 
   return (
-    <div className=" min-h-screen bg-gradient-to-bl from-amber-50 via-red-200 to-yellow-200 pb-20">
+    <div className="">
       <div className="  font-bold  text-2xl sm:text-4xl md:text-4xl lg:text-6xl xl:text-8xl container mx-auto  py-12 sm:py-24  px-12">
         {" "}
         Indigenous Dynamic Page
         <h2 className="  text-gray-900  sm:text-4xl md:text-4xl lg:text-4xl xl:text-4xl container mx-auto px-8  ">
-          Check out the latest languages , text and audio below.{" "}
+          Check out the latest languages, text and audio below.{" "}
         </h2>
       </div>
       <div className="relative mx-auto max-w-7xl">

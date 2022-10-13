@@ -7,7 +7,7 @@ function Main() {
       <header className="z-200">
         <Nav />
       </header>
-      <main>
+      <main className="mx-auto max-w-7xl">
         <Outlet />
       </main>
 

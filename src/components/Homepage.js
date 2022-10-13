@@ -6,7 +6,7 @@ import LatestBlogs from "./latestsection.js";
 import { Routes, Route, Outlet } from "react-router-dom";
 function Homepage() {
   return (
-    <div className="h-screen bg-slate-50">
+    <div className="">
       <div className="">
         <LatestBlogs></LatestBlogs>
       </div>

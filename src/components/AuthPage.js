@@ -21,7 +21,7 @@ function AuthPage() {
   };
   return (
     <div className="h-screen">
-      <div className="grid grid-cols-1 gap-4 place-items-center h-screen bg-gradient-to-bl from-amber-50 via-red-200 to-yellow-200">
+      <div className="grid grid-cols-1 gap-4 place-items-center h-screen">
         <div className="grid grid-rows-2 h-96 place-items-center bg-red-400 rounded-md py-2 px-8 shadow-md">
           <div>
             <h1 className="pb-4 px-4 text-center text-4xl font-bold text-white">

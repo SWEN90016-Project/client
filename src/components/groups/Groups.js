@@ -122,13 +122,13 @@ function Groups() {
   }, []);
   if (loading) {
     return (
-      <div className="h-screen   bg-gradient-to-bl from-amber-50 via-red-200 to-yellow-200">
+      <div className="">
         <h1>Loading</h1>
       </div>
     );
   }
   return (
-    <div className="py-2 h-screen bg-gradient-to-bl from-amber-50 via-red-200 to-yellow-200">
+    <div className="py-2 h-screen mx-auto max-w-7xl">
       <div className="grid grid-flow-row">
         <div className="grid grid-flow-col items-center px-2">
           <h1 className="">Groups Page</h1>
@@ -208,7 +208,7 @@ function Groups() {
                   </div>
                 </div>
 
-                <div className="grid grid-cols-5 grid-flow-row py-4 bg-white rounded-b-md bg-opacity-60 backdrop-filter backdrop-blur-lg z-0">
+                <div className="grid grid-cols-5 grid-flow-row py-4 bg-white rounded-b-md ">
                   <div className="col-span-5 p-2 font-bold">Group Members:</div>
                   {group.userList.map((user, index) => (
                     <div className="flex flex-row gap-1 p-2">
