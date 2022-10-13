@@ -140,11 +140,15 @@ export default function lastestblogs() {
         </div>
       </div>
       <div className="container px-6 py-10 mx-auto">
-        <div className="grid grid-cols-1 gap-8 mt-8 md:mt-16 md:grid-cols-2">
+        <div className="grid grid-cols-1 gap-8 mt-8 md:grid-cols-2">
           {posts.map((post) => (
-            <div key={post.title} className="lg:flex">
+            <a
+              key={post.title}
+              href={post.category.href}
+              className="bg-red-300 bg-opacity-20 backdrop-blur-lg drop-shadow-lg border border-red-400 rounded-lg hover:bg-white"
+            >
               <img
-                className="object-cover w-full h-56 rounded-lg lg:w-64"
+                className="object-cover w-full h-56 rounded-tl-lg lg:w-64"
                 src={post.imageUrl}
                 alt=""
               />
@@ -179,7 +183,7 @@ export default function lastestblogs() {
                   </div>
                 </div>
               </div>
-            </div>
+            </a>
           ))}
         </div>
       </div>
