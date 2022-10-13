@@ -46,53 +46,59 @@ function ImageCard(props) {
   };
   return (
     <div>
-      <div>
-        <h1>{props.item.title}</h1>
-        <h1> Authored by :{props.item.postedBy}</h1>
+      <div className="grid grid-cols-2">
+        <div>
+          <h1>{props.item.title}</h1>
+          <h1> Authored by :{props.item.postedBy}</h1>
 
-        <h1> Posted on {moment(props.item.createdAt).format("MMM Do YY")}</h1>
+          <h1> Posted on {moment(props.item.createdAt).format("MMM Do YY")}</h1>
+        </div>{" "}
+        <div>
+          {authLevel === "admin" ||
+          authLevel === "update" ||
+          authLevel === "delete" ? (
+            <button
+              className="bg-blue-400 rounded-lg p-1 mr-2 hover:bg-blue-700 hover:text-white"
+              onClick={() => {
+                setEdit(true);
+              }}
+            >
+              Edit
+            </button>
+          ) : (
+            <></>
+          )}
+          {authLevel === "admin" || authLevel === "delete" ? (
+            <button
+              className="bg-rose-400 rounded-lg p-1 mr-2 hover:bg-red-500 hover:text-white"
+              onClick={() => {
+                deleteFile(props.item._id);
+              }}
+            >
+              Delete
+            </button>
+          ) : (
+            <></>
+          )}
+          <button
+            className="bg-green-400 rounded-lg p-1 hover:bg-green-500 hover:text-white"
+            onClick={() => {
+              console.log(props.item);
+              download(props.item.fileName, props.item._id);
+            }}
+          >
+            Download
+          </button>
+        </div>
       </div>
 
       <img
         src={`http://localhost:9000/${props.item.filePath}`}
         alt="{{ image }}"
         width={500}
+        height={200}
       />
-      {authLevel === "admin" ||
-      authLevel === "update" ||
-      authLevel === "delete" ? (
-        <button
-          className="bg-blue-400 rounded-lg p-1 mr-2 hover:bg-blue-700 hover:text-white"
-          onClick={() => {
-            setEdit(true);
-          }}
-        >
-          Edit
-        </button>
-      ) : (
-        <></>
-      )}
-      {authLevel === "admin" || authLevel === "delete" ? (
-        <button
-          className="bg-rose-400 rounded-lg p-1 mr-2 hover:bg-red-500 hover:text-white"
-          onClick={() => {
-            deleteFile(props.item._id);
-          }}
-        >
-          Delete
-        </button>
-      ) : (
-        <></>
-      )}
-      <button
-        className="bg-green-400 rounded-lg p-1 hover:bg-green-500 hover:text-white"
-        onClick={() => {
-          console.log(props.item);
-          download(props.item.fileName, props.item._id);
-        }}
-      >
-        Download
-      </button>
+
       {edit ? (
         <div>
           <input

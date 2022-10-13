@@ -94,7 +94,11 @@ function Welcome() {
       <div className="grid grid-cols-3">
         <div className="grid grid-cols-1 gap-4 place-items-center h-screen bg-amber-400">
           <div className="grid grid-rows-auto h-96 place-items-center">
-            <img className="h-32 w-auto" src={indigenousSymbol} alt="" />
+            <img
+              className="h-32 w-auto rotate-180"
+              src={indigenousSymbol}
+              alt=""
+            />
             <div>
               <h1 className="pb-4 px-4 text-center text-4xl font-bold text-white">
                 Indigenous Languages: Revival and Reclamation Online Research

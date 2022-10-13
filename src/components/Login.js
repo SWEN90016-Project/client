@@ -63,7 +63,7 @@ function Login() {
       <div>
         <Link to="/">
           <img
-            className="mx-auto h-32 w-auto"
+            className="mx-auto h-32 w-auto rotate-180"
             src={indigenousSymbol}
             alt="Your Company"
           />

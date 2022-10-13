@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import NavDropdown from "./NavDropdown";
-import indigenousSymbol from "./assets/aboriginal-australia.png";
+import indigenousSymbol from "./assets/aboriginal-australia-128.png";
 export default function Nav() {
   return (
     <header className="bg-amber-500 z-100 z-10">
@@ -10,7 +10,7 @@ export default function Nav() {
             <Link to="/Homepage">
               {/* <span className="sr-only">Your Company</span> */}
               <img
-                className="h-10 w-auto"
+                className="h-12 w-auto rotate-180"
                 src={indigenousSymbol}
                 // src="https://tailwindui.com/img/logos/mark.svg?color=white"
                 alt=""
