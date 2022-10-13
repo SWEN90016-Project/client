@@ -60,7 +60,7 @@ function Login() {
   };
   return (
     <div className="flex flex-col justify-center py-12 sm:px-6 lg:px-8 min-h-screen  bg-gradient-to-bl from-amber-50 via-red-200 to-yellow-200 ">
-      <div className=" mt-2 sm:mx-auto sm:w-full sm:max-w-md rounded-lg bg-white bg-opacity-30 backdrop-blur-lg drop-shadow-lg border">
+      <div className=" mt-2 sm:mx-auto sm:w-full sm:max-w-md rounded-lg bg-white bg-opacity-50 backdrop-blur-lg drop-shadow-lg border">
         <div className=" py-8 px-4 shadow sm:rounded-lg sm:px-10">
           <Link to="/">
             <img
