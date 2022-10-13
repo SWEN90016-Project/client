@@ -93,7 +93,6 @@ function EnglishDynamic() {
             ))
           )}
         </div>
-        <Audio urls={[track2, track3, track]} />
       </div>
       <div className=" h-1/2 justify-center align-middle grid grid-cols-3 ">
         <div className=" col-start-2 col-end-3"></div>
