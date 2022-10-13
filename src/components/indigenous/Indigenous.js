@@ -5,16 +5,21 @@ function Indigenous() {
   const { authLevel, username } = useContext(UserTokenContext);
   if ((authLevel === "admin") | (authLevel === "client")) {
     return (
-      <div className="h-screen bg-blue-400">
-        <h1 className="text-black">Indigenous</h1>
-        <Link to="/Homepage">Homepage</Link>
+      <div className="min-h-screen bg-gradient-to-bl from-amber-50 via-red-200 to-yellow-200">
+        <div className="  font-bold  text-2xl sm:text-4xl md:text-4xl lg:text-6xl xl:text-8xl container mx-auto  py-12 sm:py-24  px-12 ">
+          Indigenous Dhudhuroa Language
+          <h2 className="  text-gray-900  sm:text-4xl md:text-4xl lg:text-4xl xl:text-4xl container mx-auto px-8  ">
+            Access Granted
+          </h2>
+        </div>
       </div>
     );
   }
   return (
-    <div className="h-screen bg-blue-400">
-      <h1 className="text-black">ACCESS RESTRICTED</h1>
-      <Link to="/Homepage">Homepage</Link>
+    <div className="min-h-screen bg-gradient-to-bl from-amber-50 via-red-200 to-yellow-200">
+      <div className="  font-bold  text-2xl sm:text-4xl md:text-4xl lg:text-6xl xl:text-8xl container mx-auto  py-12 sm:py-24  px-12">
+        [Access Restricted]
+      </div>
     </div>
   );
 }

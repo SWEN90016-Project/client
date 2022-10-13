@@ -132,13 +132,13 @@ function Text() {
 
   if (loading && loadingUsers) {
     return (
-      <div className="h-screen  bg-gradient-to-bl from-amber-50 via-indigo-200 to-amber-300">
+      <div className="h-screen  bg-gradient-to-bl from-amber-50 via-red-200 to-yellow-200">
         <h1>Loading</h1>
       </div>
     );
   }
   return (
-    <div className="grid  grid-cols-4 min-h-screen  bg-gradient-to-bl from-amber-50 via-indigo-200 to-amber-300">
+    <div className="grid  grid-cols-4 min-h-screen  bg-gradient-to-bl from-amber-50 via-red-200 to-yellow-200">
       <div className="col-span-3  mr-2 ml-2">
         <input
           className="mt-2 mb-2 rounded-md"

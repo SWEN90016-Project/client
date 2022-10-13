@@ -27,19 +27,21 @@ function classNames(...classes) {
 
 export default function NavDropdown() {
   return (
-    <Popover className="relative">
+    <Popover className="relative z-100">
       {({ open }) => (
         <>
           <Popover.Button
             className={classNames(
-              open ? "text-gray-900" : "text-white",
-              "group inline-flex items-center rounded-md text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+              open
+                ? "text-gray-900"
+                : "text-base font-[550] hover:border-black border border-transparent rounded-lg px-2",
+              "group inline-flex items-center text-base font-[550] hover:border-black border border-transparent rounded-lg px-2 hover:text-gray-900 "
             )}
           >
             <span>Language Pages</span>
             <ChevronDownIcon
               className={classNames(
-                open ? "text-white" : "text-white",
+                open ? "text-base font-[550]" : "text-black",
                 "ml-2 h-5 w-5 group-hover:text-gray-500"
               )}
               aria-hidden="true"
@@ -55,9 +57,9 @@ export default function NavDropdown() {
             leaveFrom="opacity-100 translate-y-1"
             leaveTo="opacity-0 translate-y-0"
           >
-            <Popover.Panel className="absolute left-40 z-10 mt-3 w-screen max-w-xs -translate-x-1/2 transform px-2 sm:px-0">
+            <Popover.Panel className="absolute left-40 z-100 mt-3 w-screen max-w-xs -translate-x-1/2 transform px-2 sm:px-0">
               <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
-                <div className="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8">
+                <div className="relative z-100 grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8">
                   {solutions.map((item) => (
                     <Link
                       key={item.name}

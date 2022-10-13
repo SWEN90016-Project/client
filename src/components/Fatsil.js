@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 function Fatsil() {
   return (
-    <div className="min-h-screen bg-orange-200 py-32">
+    <div className="min-h-screen bg-gradient-to-bl from-amber-50 via-red-200 to-yellow-200 py-32">
       <div className="flex items-center justify-center  ">
         <div className="container px-6 py-10 mx-auto">
-          <div className="bg-orange-500 text-white   rounded-lg border shadow-lg p-10">
+          <div className="bg-red-400 text-white   rounded-lg border shadow-lg p-10">
             <h2 className="  text-white sm:text-4xl md:text-4xl lg:text-4xl xl:text-4xl container mx-auto px-8 text-bold ">
               We would like to acknowledge the Traditional Custodians of the
               land on which we meet today, and pay our respects to their Elders

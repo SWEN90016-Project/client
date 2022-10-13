@@ -120,12 +120,11 @@ function Welcome() {
         <div className="h-screen bg-white col-span-2 grid grid-cols-1 gap-4 place-items-center">
           <div className="grid grid-flow-row place-items-center  rounded-lg">
             <div>
-              <h1 className="p-4 text-center text-7xl font-bold text-amber-500">
+              <h1 className="p-4 text-center text-7xl font-bold text-amber-400">
                 Create Account
               </h1>
-              <h2 className="text-center text-xl text-amber-500">
-                Create an Account and apply for authorization on the
-                authorization page
+              <h2 className="text-center text-xl text-amber-400">
+                Create an Account and apply for authorization
               </h2>
             </div>
             <div className="w-full pt-4">
@@ -216,7 +215,7 @@ function Welcome() {
                   )}
                   <button
                     type="submit"
-                    className="bg-amber-500 px-8 py-2 rounded-md text-white hover:bg-amber-800"
+                    className="bg-amber-400 px-8 py-2 rounded-md text-white hover:bg-amber-800"
                   >
                     Register
                   </button>

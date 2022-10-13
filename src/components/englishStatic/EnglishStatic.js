@@ -4,45 +4,45 @@ const track = require("url:../assets/X2Download.app - Traditional Didgeridoo Rhy
 import UML from "../assets/UML Draft.png";
 function EnglishStatic() {
   return (
-    <div className="h-screen">
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3">
-        <div className="grid grid-cols-1 place-items-center h-screen bg-red-500">
+    <div className="min-h-screen bg-gradient-to-bl from-amber-50 via-red-200 to-yellow-200">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 divide-x divide-black">
+        <div className="grid grid-cols-1 place-items-center h-screen ">
           <div className="grid grid-rows-2 relative h-96 place-items-center">
             <div>
-              <h1 className="pb-4 px-4 text-center text-xl sm:text-lg md:text-lg lg:text-4xl xl:text-4xl font-bold text-white">
+              <h1 className="pb-4 px-4 text-center text-xl sm:text-lg md:text-lg lg:text-4xl xl:text-4xl font-bold ">
                 Further Indigenous Language Learning Subpages
               </h1>
-              <h2 className="text-center text-xl sm:text-lg md:text-lg lg:text-4xl xl:text-4xl text-white">
+              <h2 className="text-center text-xl sm:text-lg md:text-lg lg:text-4xl xl:text-4xl ">
                 To greater enrich your learning please visit these subpages
               </h2>
             </div>
 
             <Link
               to="/Homepage/englishStatic/IndigenousCommunityKnowledge"
-              className="border-2 border-white text-white px-8 py-2 rounded-md"
+              className="border-2 border-white e px-8 py-2 rounded-md"
             >
               Indigenous Community Knowledge
             </Link>
 
             <Link
               to="/Homepage/englishStatic/CulturallyRelevantPerspective"
-              className="border-2 border-white text-white px-8 py-2 rounded-md"
+              className="border-2 border-white  px-8 py-2 rounded-md"
             >
               Culturally Relevant Perspective
             </Link>
           </div>
         </div>
-        <div className=" bg-yellow-300  h-screen col-span-2 grid grid-cols-2 items-center justify-center">
+        <div className="h-screen col-span-2 grid grid-cols-2 items-center justify-center pr-2 pl-2">
           <div className="relative col-span-2 grid grid-cols-1 items-center justify-center">
-            <h1 className=" relative align-bottom justify-center place-items-center px-4 text-center text-4xl sm:text-2xl md:text-2xl lg:text-4xl xl:text-4xl font-bold text-white">
+            <h1 className=" relative align-bottom justify-center place-items-center px-4 text-center text-4xl sm:text-2xl md:text-2xl lg:text-4xl xl:text-4xl font-bold ">
               DATA TYPES DISPLAYED BELOW:
             </h1>
 
-            <h1 className=" relative align-bottom  px-4 pt-8 text-center text-4xl sm:text-2xl md:text-2xl lg:text-4xl xl:text-4xl font-bold text-white">
+            <h1 className=" relative align-bottom  px-4 pt-8 text-center text-4xl sm:text-2xl md:text-2xl lg:text-4xl xl:text-4xl font-bold ">
               It is of incredible importance to many individuals and communities
               that this project is completed to a high standard.
             </h1>
-            <h1 className="relative align-bottom px-4 pt-8 text-center text-4xl sm:text-2xl md:text-2xl lg:text-4xl xl:text-4xl font-bold text-white">
+            <h1 className="relative align-bottom px-4 pt-8 text-center text-4xl sm:text-2xl md:text-2xl lg:text-4xl xl:text-4xl font-bold ">
               Because then all forms of language and culture can be safeguarded
               and preserved throughout history.
             </h1>
@@ -129,7 +129,7 @@ function EnglishStatic() {
         </div>
       </div>
 
-      <div className="grid grid-cols-5 md:grid-cols-5  lg:grid-cols-5 place-items-center bg-black">
+      <div className="grid grid-cols-5 md:grid-cols-5  lg:grid-cols-5 place-items-center ">
         <figure className=" pt-5 relative max-w-sm">
           <a href="#">
             <img
@@ -176,7 +176,7 @@ function EnglishStatic() {
           </a>
         </figure>
       </div>
-      <div className="pt-5 pb-5 grid grid-cols-2 md:grid-cols-2 lg:grid-cols-2 place-items-center bg-black">
+      <div className="pt-5 pb-5 grid grid-cols-2 gap-4 md:grid-cols-2 lg:grid-cols-2 place-items-center ">
         <figure className="relative max-w-full">
           <a href="#">
             <img
@@ -186,12 +186,12 @@ function EnglishStatic() {
             ></img>
           </a>
         </figure>
-        <Audio urls={[track]} place-items-center />
+        <Audio urls={[track]} className="place-self-center" />
       </div>
-      <h1 className=" relative align-bottom justify-center place-items-center px-4 text-center text-4xl sm:text-2xl md:text-2xl lg:text-4xl xl:text-4xl font- bg-black text-white">
+      <h1 className=" relative align-bottom justify-center place-items-center px-4 text-center text-4xl sm:text-2xl md:text-2xl lg:text-4xl xl:text-4xl">
         UML Design
       </h1>
-      <div className="pt-5 pb-5 grid grid-cols-3 md:grid-cols-3 lg:grid-cols-3 place-items-center bg-black">
+      <div className="pt-5 pb-5 grid grid-cols-3 md:grid-cols-3 lg:grid-cols-3 place-items-center ">
         <figure className="relative max-w-full col-span-3">
           <a href="#">
             <img className="rounded-lg" src={UML} alt="image description"></img>

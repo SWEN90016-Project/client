@@ -5,7 +5,9 @@ import { UserTokenContext } from "../../App";
 import {
   CheckIcon,
   ChevronUpDownIcon,
+  PlusIcon,
   TrashIcon,
+  UserPlusIcon,
 } from "@heroicons/react/20/solid";
 const API_URL = "http://localhost:9000/api/";
 
@@ -120,13 +122,13 @@ function Groups() {
   }, []);
   if (loading) {
     return (
-      <div className="h-screen   bg-gradient-to-bl from-amber-50 via-indigo-200 to-amber-300">
+      <div className="h-screen   bg-gradient-to-bl from-amber-50 via-red-200 to-yellow-200">
         <h1>Loading</h1>
       </div>
     );
   }
   return (
-    <div className="py-2 h-screen bg-gradient-to-bl from-amber-50 via-indigo-200 to-amber-300">
+    <div className="py-2 h-screen bg-gradient-to-bl from-amber-50 via-red-200 to-yellow-200">
       <div className="grid grid-flow-row">
         <div className="grid grid-flow-col items-center px-2">
           <h1 className="">Groups Page</h1>
@@ -144,16 +146,19 @@ function Groups() {
                 onClick={() => {
                   addGroup(groupName);
                 }}
-                className="bg-blue-400 rounded-lg p-2 hover:bg-blue-700 hover:text-white"
+                className="bg-blue-400 rounded-lg p-2 group hover:bg-blue-700 hover:text-white"
               >
-                Add
+                <PlusIcon
+                  className="h-5 w-5 text-black group-hover:text-white"
+                  aria-hidden="true"
+                />
               </button>
             </div>
           ) : (
             <></>
           )}
         </div>
-        <div className="grid grid-flow-row gap-2 p-2 ">
+        <div className="grid grid-flow-row gap-2 p-2">
           {/* filteredUsers.map((user) => ( */}
           {allGroups.length === 0 ? (
             <div>
@@ -162,7 +167,7 @@ function Groups() {
           ) : (
             allGroups.map((group) => (
               <div key={group._id} className="rounded-lg hover:shadow-2xl">
-                <div className="grid grid-flow-col items-center bg-blue-500 p-2 rounded-t-md">
+                <div className="grid grid-flow-col items-center bg-red-400 p-2 rounded-t-md">
                   <div className="flex  flex-row gap-2">
                     <p className="text-white text-lg font-medium">
                       {group.groupName}
@@ -175,21 +180,27 @@ function Groups() {
                           setOpen(true);
                           setSelectedGroup(group._id);
                         }}
-                        className="place-self-end bg-blue-400 rounded-lg p-1 hover:bg-blue-700 hover:text-white"
+                        className="place-self-end bg-blue-400 rounded-lg p-2 group mr-2 hover:bg-blue-700 hover:text-white"
                       >
-                        Add User
+                        <UserPlusIcon
+                          className="h-5 w-5 text-black group-hover:text-white"
+                          aria-hidden="true"
+                        />
                       </button>
                     ) : (
                       <></>
                     )}
                     {authLevel === "admin" ? (
                       <button
+                        className="bg-rose-500 rounded-lg p-2 group mr-2 hover:bg-red-500 hover:text-white"
                         onClick={() => {
-                          deleteGroup(group._id);
+                          deleteFile(props.item._id);
                         }}
-                        className=" bg-rose-400 rounded-lg p-1 hover:bg-red-500 hover:text-white"
                       >
-                        Delete
+                        <TrashIcon
+                          className="h-5 w-5 text-black group-hover:text-white"
+                          aria-hidden="true"
+                        />
                       </button>
                     ) : (
                       <></>
@@ -197,7 +208,7 @@ function Groups() {
                   </div>
                 </div>
 
-                <div className="grid grid-cols-5 grid-flow-row py-4 bg-white rounded-b-md bg-opacity-60 backdrop-filter backdrop-blur-lg">
+                <div className="grid grid-cols-5 grid-flow-row py-4 bg-white rounded-b-md bg-opacity-60 backdrop-filter backdrop-blur-lg z-0">
                   <div className="col-span-5 p-2 font-bold">Group Members:</div>
                   {group.userList.map((user, index) => (
                     <div className="flex flex-row gap-1 p-2">

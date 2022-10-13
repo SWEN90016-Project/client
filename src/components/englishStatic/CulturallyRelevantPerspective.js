@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 function CulturallyRelevantPerspective() {
   return (
-    <div className="h-screen bg-slate-50">
-      <div className="grid grid-cols-3 md:grid-cols-3  lg:grid-cols-3 place-items-center bg-slate-50">
+    <div className="min-h-screen bg-gradient-to-bl from-amber-50 via-red-200 to-yellow-200">
+      <div className="grid grid-cols-3 md:grid-cols-3  lg:grid-cols-3 place-items-center ">
         <figure class="pt-10 col-span-3 relative max-w-xl max-h-40 place-items-center object-center">
           <a href="#">
             <img

@@ -128,8 +128,8 @@ const posts = [
 
 export default function lastestblogs() {
   return (
-    <section className="bg-white dark:bg-gray-900">
-      <div className="relative mx-auto max-w-7xl">
+    <section className="min-h-screen bg-gradient-to-bl from-amber-50 via-red-200 to-yellow-200">
+      <div className=" mx-auto max-w-7xl pt-4">
         <div className="text-center">
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
             Welcome to the Online Language Research Tool{" "}

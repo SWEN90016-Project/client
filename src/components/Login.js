@@ -68,10 +68,10 @@ function Login() {
             alt="Your Company"
           />
         </Link>
-        <h1 className="p-4 text-center text-4xl font-bold text-amber-500">
+        <h1 className="p-4 text-center text-4xl font-bold text-amber-400">
           Sign in to your account
         </h1>
-        <h2 className="text-center text-xl text-amber-500">
+        <h2 className="text-center text-xl text-amber-400">
           Login to see research
         </h2>
       </div>
@@ -124,7 +124,7 @@ function Login() {
             </div>
             <button
               type="submit"
-              className="bg-amber-500 px-8 py-2 rounded-md text-white hover:bg-amber-700"
+              className="bg-amber-400 px-8 py-2 rounded-md text-white hover:bg-amber-700"
               disabled={loading}
             >
               Login
