@@ -145,7 +145,7 @@ export default function lastestblogs() {
             <a
               key={post.title}
               href={post.category.href}
-              className="bg-red-300 bg-opacity-20 backdrop-blur-lg drop-shadow-lg border border-red-400 rounded-lg hover:bg-white"
+              className="bg-red-300 bg-opacity-20  border border-red-400 rounded-lg hover:bg-white"
             >
               <img
                 className="object-cover w-full h-56 rounded-tl-lg lg:w-64"
