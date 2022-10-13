@@ -32,7 +32,7 @@ function EnglishStatic() {
             </Link>
           </div>
         </div>
-        <div className="h-screen col-span-2 grid grid-cols-2 items-center justify-center pr-2 pl-2">
+        <div className="h-screen col-span-2 grid grid-cols-2 items-center justify-center pr-2 pl-2 ml-4">
           <div className="relative col-span-2 grid grid-cols-1 items-center justify-center">
             <h1 className=" relative align-bottom justify-center place-items-center px-4 text-center text-4xl sm:text-2xl md:text-2xl lg:text-4xl xl:text-4xl font-bold ">
               DATA TYPES DISPLAYED BELOW:
@@ -48,7 +48,7 @@ function EnglishStatic() {
             </h1>
           </div>
 
-          <div className="relative col-span-5 grid grid-cols-5 items-center justify-center">
+          <div className="relative col-span-5 grid grid-cols-5 items-center justify-center ml-4">
             <svg
               className="w-10 h-10"
               fill="none"

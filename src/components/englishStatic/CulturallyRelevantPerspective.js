@@ -2,11 +2,11 @@ import { Link } from "react-router-dom";
 function CulturallyRelevantPerspective() {
   return (
     <div className="">
-      <div className="grid grid-cols-3 md:grid-cols-3  lg:grid-cols-3 place-items-center ">
-        <figure class="pt-10 col-span-3 relative max-w-xl max-h-40 place-items-center object-center">
+      <div className="grid grid-cols-3 md:grid-cols-3  lg:grid-cols-3 place-items-center">
+        <figure className="pt-10 col-span-3 max-w-xl max-h-40 place-items-center">
           <a href="#">
             <img
-              class="rounded-lg object-center place-items-center justify relative max-w-full"
+              className="rounded-lg"
               src="https://insiderguides.com.au/wp-content/uploads/2016/09/Screen-Shot-2016-12-13-at-5.39.25-pm.png"
               alt="image description"
             ></img>
