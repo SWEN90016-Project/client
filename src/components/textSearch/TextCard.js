@@ -34,8 +34,8 @@ function TextCard(props) {
         <div className="flex place-self-end flex-row gap-2">
           <button
             onClick={() => {
-              setOpen(true);
-              setSelectedGroup(group._id);
+              props.setOpen(true);
+              props.setSelectedText(props.data._id);
             }}
             className="place-self-end bg-blue-400 rounded-lg p-2 group mr-2 hover:bg-blue-700 hover:text-white"
           >
@@ -59,7 +59,7 @@ function TextCard(props) {
             <button
               className="bg-rose-500 rounded-lg p-2 group mr-2 hover:bg-red-500 hover:text-white"
               onClick={() => {
-                deleteFile(props.item._id);
+                props.deleteText(props.data._id);
               }}
             >
               <TrashIcon

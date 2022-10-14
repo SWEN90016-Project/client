@@ -92,7 +92,7 @@ function Welcome() {
   return (
     <div className=" min-h-screen bg-gradient-to-bl from-amber-50 via-red-200 to-yellow-200">
       <div className="flex mx-auto max-w-7xl h-screen justify-center items-center ">
-        <div className="grid grid-cols-1 pt-6 pb-14 w-1/3 h-1/2 bg-amber-400 bg-opacity-50 backdrop-blur-lg drop-shadow-lg ">
+        <div className="grid grid-cols-1 pt-6 pb-14 w-1/3 min-h-[50%] bg-amber-400 bg-opacity-50 backdrop-blur-lg drop-shadow-lg rounded-l-lg">
           <div className="grid grid-rows-auto place-items-center">
             <img
               className="h-32 w-auto rotate-180"
@@ -116,7 +116,7 @@ function Welcome() {
             </Link>
           </div>
         </div>
-        <div className=" col-span-2 grid grid-cols-1 gap-4 place-items-center h-1/2 w-2/3 bg-white bg-opacity-50 backdrop-blur-lg drop-shadow-lg ">
+        <div className=" col-span-2 grid grid-cols-1 gap-4 place-items-center min-h-[50%] w-2/3 bg-white bg-opacity-50 backdrop-blur-lg drop-shadow-lg rounded-r-lg">
           <div className="grid grid-flow-row place-items-center  rounded-lg">
             <div>
               <h1 className="p-4 text-center text-7xl font-bold text-amber-400">

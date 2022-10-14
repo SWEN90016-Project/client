@@ -7,10 +7,7 @@ import AudioV2 from "./AudioV2";
 import axios from "axios";
 import { UserTokenContext } from "../../App";
 const API_URL = "http://localhost:9000/api/";
-const track = require("url:../assets/test.mp3");
-const track2 = require("url:../assets/singing.mp3");
 
-const track3 = require("url:../assets/riverdance.mp3");
 function EnglishDynamic() {
   const { authLevel, username } = useContext(UserTokenContext);
   const [getState, setGetState] = useState("defualt");

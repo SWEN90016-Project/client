@@ -194,7 +194,7 @@ function Groups() {
                       <button
                         className="bg-rose-500 rounded-lg p-2 group mr-2 hover:bg-red-500 hover:text-white"
                         onClick={() => {
-                          deleteFile(props.item._id);
+                          deleteGroup(group._id);
                         }}
                       >
                         <TrashIcon
