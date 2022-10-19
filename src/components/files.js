@@ -49,8 +49,9 @@ function Files() {
       formData.append("text", text);
       formData.append("title", title);
       formData.append("username", username);
-      axios.post(API_URL + "single", formData);
+      await axios.post(API_URL + "single", formData);
       // calls a reload after submission to reset form and load new data
+      //TODO implement a wait before reload
       window.location.reload();
     } catch (error) {
       const message = error.response
