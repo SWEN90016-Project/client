@@ -78,7 +78,7 @@ function AudioV2(props) {
           )}
           {authLevel === "admin" || authLevel === "delete" ? (
             <button
-              className="bg-rose-400 rounded-lg p-2 group mr-2 hover:bg-red-500 hover:text-white"
+              className="bg-rose-500 rounded-lg p-2 group mr-2 hover:bg-red-500 hover:text-white"
               onClick={() => {
                 deleteFile(props.item._id);
               }}
