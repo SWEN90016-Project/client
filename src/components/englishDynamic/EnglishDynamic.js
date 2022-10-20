@@ -53,7 +53,7 @@ function EnglishDynamic() {
             Language information shown below
           </p>
         </div>
-        <div className=" mt-12 grid gap-4 grid-cols-3">
+        <div className=" mt-12 mb-12 grid gap-4 grid-cols-3">
           {getState.data.length === 0 ? (
             <div className="relative cursor-default select-none py-2 px-4 text-gray-700">
               No Uploads
