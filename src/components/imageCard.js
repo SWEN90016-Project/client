@@ -107,7 +107,7 @@ function ImageCard(props) {
       </div>
 
       <img
-        className="object-scale-down h-48 w-96"
+        className="object-scale-down h-40 w-96"
         src={`http://localhost:9000/${props.item.filePath}`}
         alt="{{ image }}"
       />
